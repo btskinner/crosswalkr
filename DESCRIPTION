@@ -1,0 +1,21 @@
+Package: crosswalkr
+Title: Rename and Encode Data Frames Using External Crosswalk Files
+Version: 0.1.0
+Authors@R: person("Benjamin", "Skinner", email = "btskinner@virginia.edu",
+	   role = c("aut", "cre"))
+Description: A pair of functions for renaming and encoding data frames
+	     using external crosswalk files. Especially useful when
+	     constructing master data sets from multiple smaller data
+	     sets that do not name or encode variables consistently
+	     across files. Based on -renamefrom- and -encodefrom-
+	     Stata commands written by Sally Hudson et al.
+Depends: R (>= 3.4.2)
+Imports:
+	haven,
+	labelled,
+	readr,
+	readxl
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
