@@ -73,79 +73,23 @@ renamefrom_ <- function(.data,
                         name_label = FALSE
                         ) {
 
-    ## figure out crosswalk file type using file ending
-    ext <- tolower(tools::file_ext(cw_file))
+    ## read in crosswalk file
+    cw <- get_cw_file(cw_file, delimiter, sheet)
 
-    ## read based on filetype
-    if (ext == 'xls' || ext == 'xlsx') {
+    ## confirm columns are in crosswalk
+    confirm_col(cw, raw)
+    confirm_col(cw, clean)
+    if (!is.null(label)) { confirm_col(cw, label) }
 
-        ## excel
-        sheet <- ifelse(!is.null(sheet), sheet, 1)
-        cw <- readxl::read_excel(cw_file, sheet = sheet)
-
-    } else if (ext == 'rda' || ext == 'rdata' || ext == 'rds') {
-
-        ## R
-        if (ext == 'rds') { cw <- readRDS(cw_file) }
-        else { cw <- get(load(cw_file)) }
-
-    } else if (ext == 'dta') {
-
-        ## stata
-        cw <- haven::read_stata(cw_file)
-
-    } else {
-
-        ## csv
-        if (ext == 'csv' && is.null(delimiter)) { delim <- ',' }
-
-        ## tsv
-        else if (ext == 'tsv' && is.null(delimiter)) { delim <- '\t' }
-
-        ## user-supplied
-        else if (!is.null(delimiter)) { delim <- delimiter }
-
-        ## error
-        else {
-
-            stop('File type not recognized; please supply delimiter string.',
-                 call. = FALSE)
-        }
-
-        ## delimited
-        cw <- readr::read_delim(cw_file, delim = delim,
-                                col_types = readr::cols(.default = 'c'))
-
-    }
+    ## verify that raw and clean are unique in crosswalk file (1:1 mapping)
+    check_dups(cw, raw, 'm1')
+    check_dups(cw, clean, 'm1')
 
     ## get starting names
     names_ <- names(.data)
 
     ## ignore case by setting names to lower
     if (case_ignore) { names_ <- tolower(names_) }
-
-    ## verify that raw and clean are unique (1:1 mapping)
-    if (anyDuplicated(cw[[raw]])) {
-
-        ## raw column
-        dups <- cw[[raw]][duplicated(cw[[raw]])]
-        stop(paste(c('The following values are duplicated in the', raw, 'column:\n',
-                     paste(dups, '\n'),
-                     'Please specify a 1:1 mapping from old names to new names.'),
-                   collapse = ' '))
-
-    }
-
-    if (anyDuplicated(cw[[clean]])) {
-
-        ## clean column
-        dups <- cw[[clean]][duplicated(cw[[clean]])]
-        stop(paste(c('The following values are duplicated in the', clean, 'column:\n',
-                     paste(dups, '\n'),
-                     'Please specify a 1:1 mapping from old names to new names.'),
-                   collapse = ' '))
-
-    }
 
     ## drop unmatched names
     if (drop_extra) {

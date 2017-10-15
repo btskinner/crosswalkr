@@ -14,7 +14,8 @@ Imports:
 	haven,
 	labelled,
 	readr,
-	readxl
+	readxl,
+	tibble
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
