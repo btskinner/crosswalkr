@@ -39,7 +39,7 @@ Available functions
                      fips = c(21,47,51),
                      region = c('South','South','South'))
 
-    ## crosswalk with to convert old names to new names with labels
+    ## crosswalk with which to convert old names to new names with labels
     cw <- data.frame(old_name = c('state','fips'),
                      new_name = c('stname','stfips'),
                      label = c('Full state name', 'FIPS code'))
