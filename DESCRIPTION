@@ -9,7 +9,7 @@ Description: A pair of functions for renaming and encoding data frames
 	     sets that do not name or encode variables consistently
 	     across files. Based on -renamefrom- and -encodefrom-
 	     Stata commands.
-URL: http://github.com/btskinner/crosswalkr
+URL: https://github.com/btskinner/crosswalkr
 BugReports: https://github.com/btskinner/crosswalkr/issues   
 Depends: R (>= 3.3.0)
 Imports:
