@@ -1,6 +1,6 @@
 
 ## function to read crosswalk file based on file type
-get_cw_file <- function(cw_file, delimiter, sheet) {
+get_cw_file <- function(cw_file, delimiter = NULL, sheet = NULL) {
 
     ## check to make sure file exists
     if (!file.exists(cw_file)) {
@@ -19,7 +19,7 @@ get_cw_file <- function(cw_file, delimiter, sheet) {
 
         ## excel
         sheet <- ifelse(!is.null(sheet), sheet, 1)
-        cw <- readxl::read_excel(cw_file, sheet = sheet)
+        cw <- readxl::read_excel(cw_file, sheet = sheet, col_types = 'text')
 
     } else if (ext == 'rda' || ext == 'rdata' || ext == 'rds') {
 

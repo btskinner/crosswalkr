@@ -1,2 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.git$
+\.Rhistory$
+\.Rapp\.history$
+\.DS_Store$
+^README\.md$
+^.travis\.yml$
+^builds$
+^data-raw$

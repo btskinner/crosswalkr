@@ -4,8 +4,7 @@
 #' external crosswalk files. Especially useful when constructing
 #' master data sets from multiple smaller data sets that do not name
 #' or encode variables consistently across files. Based on
-#' -renamefrom- and -encodefrom- Stata commands written by Sally
-#' Hudson et al.
+#' -renamefrom- and -encodefrom- Stata commands.
 #'
 #' @docType package
 #' @name crosswalkr

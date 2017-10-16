@@ -1,29 +1,29 @@
 #' Rename data frame columns using external crosswalk file.
 #'
-#' @param .data Data frame
-#' @param cw_file External crosswalk file with columns representing
-#'     \code{raw} (current) column names, \code{clean} (new) column
-#'     names, and labels (optional). Values in \code{raw} and
-#'     \code{clean} columns must be unique (1:1 match) or an error
-#'     will be thrown. Acceptable file types include: delimited (.csv,
-#'     .tsv, or other), R (.rda, .rdata, .rds), or Stata (.dta).
+#' @param .data Data frame or tbl_df
+#' @param cw_file String of external crosswalk file, including path,
+#'     which has columns representing \code{raw} (current) column
+#'     names, \code{clean} (new) column names, and labels
+#'     (optional). Values in \code{raw} and \code{clean} columns must
+#'     be unique (1:1 match) or an error will be thrown. Acceptable
+#'     file types include: delimited (.csv, .tsv, or other), R (.rda,
+#'     .rdata, .rds), or Stata (.dta).
 #' @param raw Name of column in \code{cw_file} that contains column
 #'     names of current data frame.
 #' @param clean Name of column in \code{cw_file} that contains new
 #'     column names.
 #' @param label Name of column in \code{cw_file} with labels for
-#'     columns (default = \code{NULL}).
+#'     columns.
 #' @param delimiter String delimiter used to parse
 #'     \code{cw_file}. Only necessary if using a delimited file that
 #'     isn't a comma-separated or tab-separated file (guessed by
-#'     function based on file ending) (default = \code{NULL}).
+#'     function based on file ending).
 #' @param sheet Specify sheet if \code{cw_file} is an Excel file and
-#'     required sheet isn't the first one (default = \code{NULL}).
+#'     required sheet isn't the first one.
 #' @param drop_extra Drop extra columns in current data frame if they
-#'     are not matched in \code{cw_file} (default = \code{NULL}).
+#'     are not matched in \code{cw_file}.
 #' @param case_ignore Ignore case when matching current (\code{raw})
-#'     column names with new (\code{clean}) column names (default =
-#'     \code{TRUE}).
+#'     column names with new (\code{clean}) column names.
 #' @param keep_label Keep current label, if any, on data frame columns
 #'     that aren't matched in \code{cw_file}. Default \code{FALSE}
 #'     means that unmatched columns have any existing labels set to
@@ -31,7 +31,21 @@
 #' @param name_label Use old (\code{raw}) column name as new
 #'     (\code{clean}) column name label. Cannot be used if
 #'     \code{label} option is set.
-#' @return Data frame with new column names and labels.
+#' @return Data frame or tbl_df with new column names and labels.
+#' @examples
+#' df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
+#'                  fips = c(21,47,51),
+#'                  region = c('South','South','South'))
+#'
+#' cw <- data.frame(old_name = c('state','fips'),
+#'                  new_name = c('stname','stfips'),
+#'                  label = c('Full state name', 'FIPS code'))
+#'
+#' df1 <- renamefrom(df, cw, old_name, new_name, label)
+#' df2 <- renamefrom(df, cw, old_name, new_name, name_label = TRUE)
+#' df3 <- renamefrom(df, cw, old_name, new_name, drop_extra = FALSE)
+#'
+#' @export
 renamefrom <- function(.data,
                        cw_file,
                        raw,
@@ -48,7 +62,7 @@ renamefrom <- function(.data,
     ## evaluate and convert to string
     raw <- deparse(substitute(raw))
     clean <- deparse(substitute(clean))
-    label <- if (!is.null(label)) { deparse(substitute(label)) }
+    label <- if (!missing(label)) { deparse(substitute(label)) }
 
     ## give to _ version
     renamefrom_(.data, cw_file, raw, clean, label, delimiter, sheet,
@@ -56,10 +70,11 @@ renamefrom <- function(.data,
 
 }
 
-
-#' Standard evaluation version of \code{\link{renamefrom}}
+#' @describeIn renamefrom Standard evaluation version of
+#'     \code{\link{renamefrom}} (\code{raw}, \code{clean}, and
+#'     \code{label} must be strings when using this version)
 #'
-#' @inheritParams renamefrom
+#' @export
 renamefrom_ <- function(.data,
                         cw_file,
                         raw,
@@ -73,13 +88,18 @@ renamefrom_ <- function(.data,
                         name_label = FALSE
                         ) {
 
-    ## read in crosswalk file
-    cw <- get_cw_file(cw_file, delimiter, sheet)
+    ## read in crosswalk file if string or load if in memory
+    if (is.character(cw_file)) { cw <- get_cw_file(cw_file, delimiter, sheet) }
+    else { cw <- cw_file }
+
+    ## convert everything to character
+    .data[] <- lapply(.data, as.character)
+    cw[] <- lapply(cw, as.character)
 
     ## confirm columns are in crosswalk
-    confirm_col(cw, raw)
-    confirm_col(cw, clean)
-    if (!is.null(label)) { confirm_col(cw, label) }
+    confirm_col(cw, raw, 'm1')
+    confirm_col(cw, clean, 'm1')
+    if (!is.null(label)) { confirm_col(cw, label, 'm1') }
 
     ## verify that raw and clean are unique in crosswalk file (1:1 mapping)
     check_dups(cw, raw, 'm1')

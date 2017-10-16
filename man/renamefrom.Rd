@@ -2,21 +2,27 @@
 % Please edit documentation in R/renamefrom.R
 \name{renamefrom}
 \alias{renamefrom}
+\alias{renamefrom_}
 \title{Rename data frame columns using external crosswalk file.}
 \usage{
 renamefrom(.data, cw_file, raw, clean, label = NULL, delimiter = NULL,
   sheet = NULL, drop_extra = TRUE, case_ignore = TRUE,
   keep_label = FALSE, name_label = FALSE)
+
+renamefrom_(.data, cw_file, raw, clean, label = NULL, delimiter = NULL,
+  sheet = NULL, drop_extra = TRUE, case_ignore = TRUE,
+  keep_label = FALSE, name_label = FALSE)
 }
 \arguments{
-\item{.data}{Data frame}
+\item{.data}{Data frame or tbl_df}
 
-\item{cw_file}{External crosswalk file with columns representing
-\code{raw} (current) column names, \code{clean} (new) column
-names, and labels (optional). Values in \code{raw} and
-\code{clean} columns must be unique (1:1 match) or an error
-will be thrown. Acceptable file types include: delimited (.csv,
-.tsv, or other), R (.rda, .rdata, .rds), or Stata (.dta).}
+\item{cw_file}{String of external crosswalk file, including path,
+which has columns representing \code{raw} (current) column
+names, \code{clean} (new) column names, and labels
+(optional). Values in \code{raw} and \code{clean} columns must
+be unique (1:1 match) or an error will be thrown. Acceptable
+file types include: delimited (.csv, .tsv, or other), R (.rda,
+.rdata, .rds), or Stata (.dta).}
 
 \item{raw}{Name of column in \code{cw_file} that contains column
 names of current data frame.}
@@ -25,22 +31,21 @@ names of current data frame.}
 column names.}
 
 \item{label}{Name of column in \code{cw_file} with labels for
-columns (default = \code{NULL}).}
+columns.}
 
 \item{delimiter}{String delimiter used to parse
 \code{cw_file}. Only necessary if using a delimited file that
 isn't a comma-separated or tab-separated file (guessed by
-function based on file ending) (default = \code{NULL}).}
+function based on file ending).}
 
 \item{sheet}{Specify sheet if \code{cw_file} is an Excel file and
-required sheet isn't the first one (default = \code{NULL}).}
+required sheet isn't the first one.}
 
 \item{drop_extra}{Drop extra columns in current data frame if they
-are not matched in \code{cw_file} (default = \code{NULL}).}
+are not matched in \code{cw_file}.}
 
 \item{case_ignore}{Ignore case when matching current (\code{raw})
-column names with new (\code{clean}) column names (default =
-\code{TRUE}).}
+column names with new (\code{clean}) column names.}
 
 \item{keep_label}{Keep current label, if any, on data frame columns
 that aren't matched in \code{cw_file}. Default \code{FALSE}
@@ -52,8 +57,29 @@ means that unmatched columns have any existing labels set to
 \code{label} option is set.}
 }
 \value{
-Data frame with new column names and labels.
+Data frame or tbl_df with new column names and labels.
 }
 \description{
 Rename data frame columns using external crosswalk file.
+}
+\section{Functions}{
+\itemize{
+\item \code{renamefrom_}: Standard evaluation version of
+\code{\link{renamefrom}} (\code{raw}, \code{clean}, and
+\code{label} must be strings when using this version)
+}}
+
+\examples{
+df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
+                 fips = c(21,47,51),
+                 region = c('South','South','South'))
+
+cw <- data.frame(old_name = c('state','fips'),
+                 new_name = c('stname','stfips'),
+                 label = c('Full state name', 'FIPS code'))
+
+df1 <- renamefrom(df, cw, old_name, new_name, label)
+df2 <- renamefrom(df, cw, old_name, new_name, name_label = TRUE)
+df3 <- renamefrom(df, cw, old_name, new_name, drop_extra = FALSE)
+
 }
