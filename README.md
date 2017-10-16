@@ -32,8 +32,6 @@ Available functions
 
 ### `renamefrom()`
 
-#### Examples
-
     library(crosswalkr)
 
     ## starting data frame
@@ -46,7 +44,8 @@ Available functions
                      new_name = c('stname','stfips'),
                      label = c('Full state name', 'FIPS code'))
 
-    ## convert old to new using labels in crosswalk file
+##### Convert old to new using labels in crosswalk file
+
     df1 <- renamefrom(df, cw, old_name, new_name, label)
     df1
 
@@ -55,7 +54,8 @@ Available functions
     ## 2 Tennessee     47
     ## 3  Virginia     51
 
-    ## convert old to new using old names as labels
+##### Convert old to new using old names as labels
+
     df2 <- renamefrom(df, cw, old_name, new_name, name_label = TRUE)
     df2
 
@@ -64,7 +64,8 @@ Available functions
     ## 2 Tennessee     47
     ## 3  Virginia     51
 
-    ## convert old to new, but keep unmatched old names in data frame
+##### Convert old to new, but keep unmatched old names in data frame
+
     df3 <- renamefrom(df, cw, old_name, new_name, drop_extra = FALSE)
     df3
 
@@ -75,17 +76,19 @@ Available functions
 
 ### `encodefrom()`
 
-#### Examples
-
     ## starting data frame
     df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                      stfips = c(21,47,51),
                      cenregnm = c('South','South','South'))
 
+    ## starting tbl_df
+    df_tbl <- tibble::as_data_frame(df)
+
     ## use state crosswalk data file from package
     cw <- get(data(stcrosswalk))
 
-    ## create new column with factor-encoded values
+##### Create new column with factor-encoded values
+
     df$state2 <- encodefrom(df, state, cw, stname, stfips, stabbr)
     df
 
@@ -94,27 +97,30 @@ Available functions
     ## 2 Tennessee     47    South     TN
     ## 3  Virginia     51    South     VA
 
-    ## create new column with labelled values
+##### Create new column with labelled values
+
     df_tbl$state2 <- encodefrom(df_tbl, state, cw, stname, stfips, stabbr)
 
-    ## create new column with factor-encoded values (ignores the fact that df_tbl is a tibble)
+##### Create new column with factor-encoded values (ignores the fact that `df_tbl` is a tibble)
+
     df_tbl$state3 <- encodefrom(df_tbl, state, cw, stname, stfips, stabbr, ignore_tibble = TRUE)
 
-    ## show results
+##### Results
+
     haven::as_factor(df_tbl)
 
     ## # A tibble: 3 x 5
     ##       state stfips cenregnm state2 state3
     ##      <fctr>  <dbl>   <fctr> <fctr> <fctr>
-    ## 1  Kentucky     21        S     KY     KY
-    ## 2 Tennessee     47        S     TN     TN
-    ## 3  Virginia     51        S     VA     VA
+    ## 1  Kentucky     21    South     KY     KY
+    ## 2 Tennessee     47    South     TN     TN
+    ## 3  Virginia     51    South     VA     VA
 
     haven::zap_labels(df_tbl)
 
     ## # A tibble: 3 x 5
     ##       state stfips cenregnm state2 state3
     ##      <fctr>  <dbl>   <fctr>  <chr> <fctr>
-    ## 1  Kentucky     21        S     21     KY
-    ## 2 Tennessee     47        S     47     TN
-    ## 3  Virginia     51        S     51     VA
+    ## 1  Kentucky     21    South     21     KY
+    ## 2 Tennessee     47    South     47     TN
+    ## 3  Virginia     51    South     51     VA
