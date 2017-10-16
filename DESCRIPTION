@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: person("Benjamin", "Skinner", email = "btskinner@virginia.edu",
 	   role = c("aut", "cre"))
 Description: A pair of functions for renaming and encoding data frames
-	     using external crosswalk files. Especially useful when
+	     using external crosswalk files. It is especially useful when
 	     constructing master data sets from multiple smaller data
 	     sets that do not name or encode variables consistently
 	     across files. Based on -renamefrom- and -encodefrom-

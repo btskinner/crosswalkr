@@ -64,7 +64,7 @@ and \code{label} must be strings when using this version)
 \examples{
 df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  stfips = c(21,47,51),
-                 cenregnm = c('S','S','S'))
+                 cenregnm = c('South','South','South'))
 
 df_tbl <- tibble::as_data_frame(df)
 

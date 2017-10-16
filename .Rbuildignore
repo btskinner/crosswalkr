@@ -5,6 +5,7 @@
 \.Rapp\.history$
 \.DS_Store$
 ^README\.md$
+^README\.Rmd$
 ^.travis\.yml$
 ^builds$
 ^data-raw$
