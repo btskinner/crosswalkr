@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Benjamin Skinner" />
+
+<meta name="date" content="2017-10-17" />
+
+<title>Introduction to crosswalkr</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to crosswalkr</h1>
+<h4 class="author"><em>Benjamin Skinner</em></h4>
+<h4 class="date"><em>2017-10-17</em></h4>
+
+
+
+<p>Researchers often must compile master data sets from a number of smaller data sets that are not consistent in terms of variable names or value encodings. This can be especially true for large administrative data sets that span multiple years and/or departments. Other times, teams of researchers must work together to maintain a master data set and it is important for replicability and future collaboration that the team rely on consistent naming and encoding conventions.</p>
+<div id="renaming" class="section level2">
+<h2>Renaming</h2>
+<p>For example, let’s say there are three flat files of student information that need to be merged into a single large data set for analysis.</p>
+<div id="file-1" class="section level3">
+<h3>File 1</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sid</th>
+<th align="left">lname</th>
+<th align="left">state</th>
+<th align="left">t_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Jackson</td>
+<td align="left">VA</td>
+<td align="left">74</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Harrison</td>
+<td align="left">KY</td>
+<td align="left">86</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">Nixon</td>
+<td align="left">IL</td>
+<td align="left">78</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="file-2" class="section level3">
+<h3>File 2</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">stu_id</th>
+<th align="left">last_name</th>
+<th align="left">st</th>
+<th align="left">test_score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">4</td>
+<td align="left">Washington</td>
+<td align="left">2</td>
+<td align="left">92</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="left">Roosevelt</td>
+<td align="left">11</td>
+<td align="left">67</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="left">Taylor</td>
+<td align="left">47</td>
+<td align="left">68</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="file-3" class="section level3">
+<h3>File 3</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">s_id</th>
+<th align="left">name</th>
+<th align="left">sta</th>
+<th align="left">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">Tyler</td>
+<td align="left">North Dakota</td>
+<td align="left">91</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">Grant</td>
+<td align="left">South Dakota</td>
+<td align="left">82</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">Adams</td>
+<td align="left">Illinois</td>
+<td align="left">89</td>
+</tr>
+</tbody>
+</table>
+<p>It is clear that these files contain the same basic information, but neither the names nor encodings for <code>state</code> | <code>st</code> | <code>sta</code> are consistent.</p>
+<p>One solution is to just fix these one at a time before joining them. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(labelled)
+<span class="kw">library</span>(haven)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">rename</span>(<span class="dt">id =</span> sid,
+           <span class="dt">last_name =</span> lname,
+           <span class="dt">stabbr =</span> stat,
+           <span class="dt">score =</span> t_score)
+
+df2 &lt;-<span class="st"> </span>file_<span class="dv">2</span> <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">rename</span>(<span class="dt">id =</span> stu_id,
+           <span class="dt">stabbr =</span> st,
+           <span class="dt">score =</span> test_score) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">stabbr =</span> <span class="kw">as.character</span>(stabbr))
+
+df3 &lt;-<span class="st"> </span>file_<span class="dv">3</span> <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">rename</span>(<span class="dt">id =</span> s_id,
+           <span class="dt">stabbr =</span> sta,
+           <span class="dt">last_name =</span> name)
+
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2, df3)
+df</code></pre></div>
+<pre><code>##   id  last_name       stabbr score
+## 1  1    Jackson           VA    74
+## 2  2   Harrison           KY    86
+## 3  3      Nixon           IL    78
+## 4  4 Washington            2    92
+## 5  5  Roosevelt           11    82
+## 6  6     Taylor           47    89
+## 7  7      Tyler North Dakota    91
+## 8  8      Grant South Dakota    82
+## 9  9      Adams     Illinois    89</code></pre>
+<p>The problem, of course, is there is a lot of room for error since the renaming process has to be repeated for each data frame.</p>
+</div>
+<div id="crosswalk" class="section level3">
+<h3>Crosswalk</h3>
+<p>Instead, it makes more sense to create a crosswalk data set that aligns old (or raw) column names with new (or clean) column names and, if desired, labels. The <code>crosswalk</code> to join these files could be:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">clean</th>
+<th align="left">label</th>
+<th align="left">file_1_raw</th>
+<th align="left">file_2_raw</th>
+<th align="left">file_3_raw</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Student ID</td>
+<td align="left">sid</td>
+<td align="left">stu_id</td>
+<td align="left">s_id</td>
+</tr>
+<tr class="even">
+<td align="left">last_name</td>
+<td align="left">Student last name</td>
+<td align="left">lname</td>
+<td align="left">last_name</td>
+<td align="left">name</td>
+</tr>
+<tr class="odd">
+<td align="left">stabbr</td>
+<td align="left">State abbreviation</td>
+<td align="left">stat</td>
+<td align="left">st</td>
+<td align="left">sta</td>
+</tr>
+<tr class="even">
+<td align="left">score</td>
+<td align="left">Test score</td>
+<td align="left">t_score</td>
+<td align="left">test_score</td>
+<td align="left">score</td>
+</tr>
+</tbody>
+</table>
+<p>To rename using the <code>renamefrom()</code> command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="kw">renamefrom</span>(file_<span class="dv">1</span>, crosswalk, <span class="dt">raw =</span> file_1_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)
+df2 &lt;-<span class="st"> </span><span class="kw">renamefrom</span>(file_<span class="dv">2</span>, crosswalk, <span class="dt">raw =</span> file_2_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)
+df3 &lt;-<span class="st"> </span><span class="kw">renamefrom</span>(file_<span class="dv">3</span>, crosswalk, <span class="dt">raw =</span> file_3_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)
+
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2, df3)
+df</code></pre></div>
+<pre><code>##   id  last_name       stabbr score
+## 1  1    Jackson           VA    74
+## 2  2   Harrison           KY    86
+## 3  3      Nixon           IL    78
+## 4  4 Washington            2    92
+## 5  5  Roosevelt           11    82
+## 6  6     Taylor           47    89
+## 7  7      Tyler North Dakota    91
+## 8  8      Grant South Dakota    82
+## 9  9      Adams     Illinois    89</code></pre>
+<p>And check out the labels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var_label</span>(df)</code></pre></div>
+<pre><code>## $id
+## [1] &quot;Student ID&quot;
+## 
+## $last_name
+## [1] &quot;Student last name&quot;
+## 
+## $stabbr
+## [1] &quot;State abbreviation&quot;
+## 
+## $score
+## [1] &quot;Test score&quot;</code></pre>
+<p>As new raw data files are added to the project, they could simply be given a new column in the crosswalk file that mapped their raw column names to the clean versions.</p>
+</div>
+</div>
+<div id="encoding" class="section level2">
+<h2>Encoding</h2>
+<p>These same example files have inconsistent encodings for state: one uses two-letter abbreviations, another the FIPS code, and another the full name. Again, instead of fixing each one at a time, a separate crosswalk for encoding these values could be used. The <code>crosswalkr</code> package includes a state-level crosswalk, <code>stcrosswalk</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(stcrosswalk)
+<span class="kw">head</span>(stcrosswalk)</code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   stfips stabbr     stname cenreg cenregnm cendiv           cendivnm
+##    &lt;int&gt;  &lt;chr&gt;      &lt;chr&gt;  &lt;int&gt;    &lt;chr&gt;  &lt;int&gt;              &lt;chr&gt;
+## 1      1     AL    Alabama      3    South      6 East South Central
+## 2      2     AK     Alaska      4     West      9            Pacific
+## 3      4     AZ    Arizona      4     West      8           Mountain
+## 4      5     AR   Arkansas      3    South      7 West South Central
+## 5      6     CA California      4     West      9            Pacific
+## 6      8     CO   Colorado      4     West      8           Mountain</code></pre>
+<p>The <code>encodefrom()</code> function works much like <code>renamefrom()</code>. The only difference is that a vector of encoded values is returned that can be added to an existing dataframe.</p>
+<p><code>encodefrom()</code> returns either base R factors or labels depending on whether the input data frame is a tibble.</p>
+<div id="return-factor" class="section level3">
+<h3>return factor</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw">encodefrom</span>(file_<span class="dv">1</span>, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr,
+                        <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)
+df1</code></pre></div>
+<pre><code>##   id last_name stabbr score    state
+## 1  1   Jackson     VA    74 Virginia
+## 2  2  Harrison     KY    86 Kentucky
+## 3  3     Nixon     IL    78 Illinois</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(df1, class)</code></pre></div>
+<pre><code>##          id   last_name      stabbr       score       state 
+## &quot;character&quot; &quot;character&quot; &quot;character&quot; &quot;character&quot;    &quot;factor&quot;</code></pre>
+</div>
+<div id="return-labelled-vector" class="section level3">
+<h3>return labelled vector</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file_1_ &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tbl_df</span>()
+df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw">encodefrom</span>(file_1_, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr,
+                        <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)
+<span class="kw">as_factor</span>(df1)</code></pre></div>
+<pre><code>##   id last_name stabbr score    state
+## 1  1   Jackson     VA    74 Virginia
+## 2  2  Harrison     KY    86 Kentucky
+## 3  3     Nixon     IL    78 Illinois</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zap_labels</span>(df1)</code></pre></div>
+<pre><code>##   id last_name stabbr score state
+## 1  1   Jackson     VA    74    51
+## 2  2  Harrison     KY    86    21
+## 3  3     Nixon     IL    78    17</code></pre>
+</div>
+</div>
+<div id="combined-example-dplyr-chain" class="section level2">
+<h2>Combined example: <code>dplyr</code> chain</h2>
+<p>The <code>renamefrom()</code> and <code>encodefrom()</code> functions can be combined in a <code>dplyr</code> chain.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">rbind</span>(file_<span class="dv">1</span> <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">tbl_df</span>() <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">renamefrom</span>(., crosswalk, file_1_raw, clean, label) <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">mutate</span>(<span class="dt">stabbr =</span> <span class="kw">encodefrom</span>(., stabbr, stcrosswalk, stabbr, stfips, stname)),
+            file_<span class="dv">2</span> <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">tbl_df</span>() <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">renamefrom</span>(., crosswalk, file_2_raw, clean, label) <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">mutate</span>(<span class="dt">stabbr =</span> <span class="kw">encodefrom</span>(., stabbr, stcrosswalk, stfips, stfips, stname)),
+            file_<span class="dv">3</span> <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">tbl_df</span>() <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">renamefrom</span>(., crosswalk, file_3_raw, clean, label) <span class="op">%&gt;%</span>
+<span class="st">            </span><span class="kw">mutate</span>(<span class="dt">stabbr =</span> <span class="kw">encodefrom</span>(., stabbr, stcrosswalk, stname, stfips, stname)))
+
+df</code></pre></div>
+<pre><code>## # A tibble: 9 x 4
+##      id  last_name    stabbr score
+##   &lt;chr&gt;      &lt;chr&gt; &lt;chr+lbl&gt; &lt;chr&gt;
+## 1     1    Jackson        51    74
+## 2     2   Harrison        21    86
+## 3     3      Nixon        17    78
+## 4     4 Washington         2    92
+## 5     5  Roosevelt        11    82
+## 6     6     Taylor        47    89
+## 7     7      Tyler        38    91
+## 8     8      Grant        46    82
+## 9     9      Adams        17    89</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_factor</span>(df)</code></pre></div>
+<pre><code>## # A tibble: 9 x 4
+##      id  last_name               stabbr score
+##   &lt;chr&gt;      &lt;chr&gt;               &lt;fctr&gt; &lt;chr&gt;
+## 1     1    Jackson             Virginia    74
+## 2     2   Harrison             Kentucky    86
+## 3     3      Nixon             Illinois    78
+## 4     4 Washington               Alaska    92
+## 5     5  Roosevelt District of Columbia    82
+## 6     6     Taylor            Tennessee    89
+## 7     7      Tyler         North Dakota    91
+## 8     8      Grant         South Dakota    82
+## 9     9      Adams             Illinois    89</code></pre>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
