@@ -1,7 +1,8 @@
-![](https://img.shields.io/badge/dev-beta-red.svg) [![GitHub
-release](https://img.shields.io/github/release/btskinner/crosswalkr.svg)](https://github.com/btskinner/crosswalkr)
 [![Travis-CI Build
 Status](https://travis-ci.org/btskinner/crosswalkr.svg?branch=master)](https://travis-ci.org/btskinner/crosswalkr)
+[![GitHub
+release](https://img.shields.io/github/release/btskinner/crosswalkr.svg)](https://github.com/btskinner/crosswalkr)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/crosswalkr)](http://cran.r-project.org/package=crosswalkr)
 
 This package offers a pair of functions, `renamefrom()` and
 `encodefrom()`, for renaming and encoding data frames using external
@@ -12,6 +13,10 @@ variables consistently across files. Based on `renamefrom` and
 team](https://github.com/slhudson/rename-and-encode).
 
 ### Install
+
+Install the latest release version from CRAN with
+
+    install.packages('crosswalkr')
 
 Install the latest development version from Github with
 
