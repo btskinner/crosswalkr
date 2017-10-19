@@ -16,13 +16,14 @@ encodefrom_(.data, var, cw_file, raw, clean, label, delimiter = NULL,
 
 \item{var}{Column name of vector to be encoded}
 
-\item{cw_file}{String of external crosswalk file, including path,
-which has columns representing \code{raw} (current) vector
-values, \code{clean} (new) vector values, and \code{label}s for
-values. Values in \code{raw} and \code{clean} columns must be
-unique (1:1 match) or an error will be thrown. Acceptable file
-types include: delimited (.csv, .tsv, or other), R (.rda,
-.rdata, .rds), or Stata (.dta).}
+\item{cw_file}{Either data frame object or string with path to
+external crosswalk file, including path, which has columns
+representing \code{raw} (current) vector values, \code{clean}
+(new) vector values, and \code{label}s for values. Values in
+\code{raw} and \code{clean} columns must be unique (1:1 match)
+or an error will be thrown. Acceptable file types include:
+delimited (.csv, .tsv, or other), R (.rda, .rdata, .rds), or
+Stata (.dta).}
 
 \item{raw}{Name of column in \code{cw_file} that contains values in
 current vector.}
