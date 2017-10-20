@@ -12,7 +12,7 @@
 #'     Stata (.dta).
 #' @param raw Name of column in \code{cw_file} that contains values in
 #'     current vector.
-#' @param clean Name of column in \code{cw_file} that contains new new
+#' @param clean Name of column in \code{cw_file} that contains new
 #'     values for vector.
 #' @param label Name of column in \code{cw_file} with labels for new
 #'     values.
