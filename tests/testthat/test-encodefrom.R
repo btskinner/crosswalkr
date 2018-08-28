@@ -64,7 +64,7 @@ test_that('Failed to assign proper values', {
                   '55','56','9','29','27','39','13','34','50','11','38','35',
                   '54','18','15')
 
-    expect_equal(haven::zap_labels(vec), act_vals)
+    expect_equal(as.character(vec), act_vals)
 
 })
 

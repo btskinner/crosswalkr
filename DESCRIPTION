@@ -1,8 +1,10 @@
 Package: crosswalkr
 Title: Rename and Encode Data Frames Using External Crosswalk Files
-Version: 0.1.2
-Authors@R: person("Benjamin", "Skinner", email = "btskinner@virginia.edu",
-	   role = c("aut", "cre"))
+Version: 0.2.0
+Authors@R: person("Benjamin", "Skinner",
+	          email = "btskinner@virginia.edu",
+    	          role = c("aut", "cre"),
+		  comment = c(ORCID = "0000-0002-0337-7415"))
 Description: A pair of functions for renaming and encoding data frames
 	     using external crosswalk files. It is especially useful when
 	     constructing master data sets from multiple smaller data
@@ -21,7 +23,7 @@ Imports: dplyr,
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Suggests: testthat,
     knitr,
     rmarkdown

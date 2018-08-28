@@ -28,7 +28,7 @@ Stata (.dta).}
 \item{raw}{Name of column in \code{cw_file} that contains values in
 current vector.}
 
-\item{clean}{Name of column in \code{cw_file} that contains new new
+\item{clean}{Name of column in \code{cw_file} that contains new
 values for vector.}
 
 \item{label}{Name of column in \code{cw_file} with labels for new
