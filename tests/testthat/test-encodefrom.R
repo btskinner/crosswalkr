@@ -37,7 +37,7 @@ vec <- encodefrom(df, state, crosswalk_file, stname, stfips, stabbr)
 
 test_that('Not proper labelled class', {
 
-    expect_is(vec, 'labelled')
+    expect_is(vec, 'haven_labelled')
 
 })
 
@@ -51,8 +51,8 @@ test_that('Failed to properly label vector', {
     lab_vals <- as.character(c(1:2,4:6,8:13,15:42,44:51,53:56))
     names(lab_vals) <- lab_names
 
-    expect_equal(names(labelled::val_labels(vec)), lab_names)
-    expect_equal(labelled::val_labels(vec), lab_vals)
+    expect_equal(names(attr(vec, 'labels', exact = TRUE)), lab_names)
+    expect_equal(attr(vec, 'labels', exact = TRUE), lab_vals)
 
 })
 
