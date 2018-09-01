@@ -9,3 +9,5 @@
 ^.travis\.yml$
 ^builds$
 ^data-raw$
+^docs$
+^_pkgdown\.yml$
