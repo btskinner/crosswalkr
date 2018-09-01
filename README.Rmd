@@ -3,6 +3,7 @@ title: crosswalkr
 output: md_document
 ---
 
+# crosswalkr
 
 ```{r, include = FALSE}
 options(width = 100)
@@ -13,6 +14,8 @@ library(dplyr)
 [![GitHub release](https://img.shields.io/github/release/btskinner/crosswalkr.svg)](https://github.com/btskinner/crosswalkr)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/crosswalkr)](http://cran.r-project.org/package=crosswalkr)
 
+## Overview
+
 This package offers a pair of functions, `renamefrom()` and
  `encodefrom()`, for renaming and encoding data frames using external
  crosswalk files. It is especially useful when constructing master
@@ -21,7 +24,7 @@ This package offers a pair of functions, `renamefrom()` and
  `encodefrom`
  [Stata commands written by Sally Hudson and team](https://github.com/slhudson/rename-and-encode).
 
-### Install
+## Installation
 
 Install the latest release version from CRAN with
 
@@ -35,19 +38,7 @@ Install the latest development version from Github with
 devtools::install_github('btskinner/crosswalkr')
 ```
 
-### Dependencies
-
-This package relies on the following packages, available in CRAN:
-
-* haven
-* labelled
-* readr
-* readxl
-* tibble
-
-## Available functions
-
-### `renamefrom()`
+## Usage
 
 ```{r}
 library(crosswalkr)
@@ -56,32 +47,39 @@ library(crosswalkr)
 df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  fips = c(21,47,51),
                  region = c('South','South','South'))
+df
 
 ## crosswalk with which to convert old names to new names with labels
 cw <- data.frame(old_name = c('state','fips'),
                  new_name = c('stname','stfips'),
                  label = c('Full state name', 'FIPS code'))
+cw
 ```  
 
-##### Convert old to new using labels in crosswalk file
+### Renaming
+
+Convert old variable names to new names and add labels from crosswalk. 
+
 ```{r}
-df1 <- renamefrom(df, cw, old_name, new_name, label)
+df1 <- renamefrom(df, cw_file = cw, raw = old_name, clean = new_name, label = label)
 df1
 ```   
 
-##### Convert old to new using old names as labels
+Convert old variable names to new names using old names as labels
+(ignoring labels in crosswalk).
 ```{r}
-df2 <- renamefrom(df, cw, old_name, new_name, name_label = TRUE)
+df2 <- renamefrom(df, cw_file = cw, raw = old_name, clean = new_name, name_label = TRUE)
 df2
 ```  
 
-##### Convert old to new, but keep unmatched old names in data frame
+Convert old variable names to new names, but keep unmatched old names
+in the data frame.
 ```{r}
-df3 <- renamefrom(df, cw, old_name, new_name, drop_extra = FALSE)
-df3
+df3 <- renamefrom(df, cw_file = cw, raw = old_name, clean = new_name, drop_extra = FALSE)
+df3 
 ```
 
-### `encodefrom()`
+### Encoding
 
 ```{r}
 
@@ -89,32 +87,36 @@ df3
 df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  stfips = c(21,47,51),
                  cenregnm = c('South','South','South'))
-
-## starting tbl_df
-df_tbl <- tibble::as_data_frame(df)
+df
 
 ## use state crosswalk data file from package
 cw <- get(data(stcrosswalk))
+cw
 ```
 
-##### Create new column with factor-encoded values
+Create a new column with factor-encoded values
 ```{r}
-df$state2 <- encodefrom(df, state, cw, stname, stfips, stabbr)
+df$state2 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 df
 ```  
 
-##### Create new column with labelled values
+Create a new column with labelled values.
 ```{r}
-df_tbl$state2 <- encodefrom(df_tbl, state, cw, stname, stfips, stabbr)
+## convert to tbl_df
+df <- tibble::as_data_frame(df)
+df$state3 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 ```
 
-##### Create new column with factor-encoded values (ignores the fact that `df_tbl` is a tibble)
+Create new column with factor-encoded values (ignores the fact that `df` is a tibble)
 ```{r}
-df_tbl$state3 <- encodefrom(df_tbl, state, cw, stname, stfips, stabbr, ignore_tibble = TRUE)
+df$state4 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr, ignore_tibble = TRUE)
 ```
 
-##### Results
+Show factors with labels:
 ```{r}
-haven::as_factor(df_tbl)
-haven::zap_labels(df_tbl)
+haven::as_factor(df)
+```
+Show factors without labels:
+```{r}
+haven::zap_labels(df)
 ```

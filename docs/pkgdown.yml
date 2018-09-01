@@ -1,0 +1,9 @@
+pandoc: 2.2.3.2
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles:
+  crosswalkr: crosswalkr.html
+urls:
+  reference: https://www.btskinner.me/crosswalkr//reference
+  article: https://www.btskinner.me/crosswalkr//articles
+

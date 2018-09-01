@@ -1,0 +1,19 @@
+url: https://www.btskinner.me/crosswalkr/
+
+authors:
+  Benjamin Skinner:
+    href: https://www.btskinner.me
+
+reference:
+  - title: Rename variables
+    desc: Harmonize variable names using external crosswalk
+    contents:
+    - starts_with('rename')
+  - title: Encode variables
+    desc: Harmonize variable value labels using external crosswalk
+    contents:
+    - starts_with('encode')
+  - title: Data
+    desc: Example crosswalk
+    contents:
+    - stcrosswalk
