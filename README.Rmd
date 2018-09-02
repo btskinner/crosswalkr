@@ -3,7 +3,7 @@ title: crosswalkr
 output: md_document
 ---
 
-# crosswalkr
+# crosswalkr <img src="man/figures/logo.png" align="right" />
 
 ```{r, include = FALSE}
 options(width = 100)

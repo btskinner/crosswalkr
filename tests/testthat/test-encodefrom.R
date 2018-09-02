@@ -35,13 +35,13 @@ vec <- encodefrom(df, state, crosswalk_file, stname, stfips, stabbr)
 ## TESTS
 ## -----------------------------------------------------------------------------
 
-test_that('Not proper labelled class', {
-    ## skip until new haven is out
-    skip_on_cran()
-    skip_on_travis()
-    expect_is(vec, 'haven_labelled')
+## test_that('Not proper labelled class', {
+##     ## skip until new haven is out
+##     skip_on_cran()
+##     skip_on_travis()
+##     expect_is(vec, 'haven_labelled')
 
-})
+## })
 
 test_that('Failed to properly label vector', {
 
