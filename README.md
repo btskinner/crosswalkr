@@ -1,5 +1,5 @@
-crosswalkr
-==========
+crosswalkr <img src="man/figures/logo.png" align="right" />
+===========================================================
 
 [![Travis-CI Build
 Status](https://travis-ci.org/btskinner/crosswalkr.svg?branch=master)](https://travis-ci.org/btskinner/crosswalkr)
@@ -148,10 +148,10 @@ Show factors with labels:
 
     ## # A tibble: 3 x 6
     ##   state     stfips cenregnm state2 state3 state4
-    ##   <fct>      <dbl> <fct>    <fct>  <fct>  <fct> 
-    ## 1 Kentucky      21 South    KY     KY     KY    
-    ## 2 Tennessee     47 South    TN     TN     TN    
-    ## 3 Virginia      51 South    VA     VA     VA
+    ##   <fct>      <dbl> <fct>    <fct>  <chr>  <fct> 
+    ## 1 Kentucky      21 South    KY     21     KY    
+    ## 2 Tennessee     47 South    TN     47     TN    
+    ## 3 Virginia      51 South    VA     51     VA
 
 Show factors without labels:
 
