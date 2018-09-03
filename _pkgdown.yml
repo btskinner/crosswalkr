@@ -17,3 +17,21 @@ reference:
     desc: Example crosswalk
     contents:
     - stcrosswalk
+
+navbar:
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: 'Get started'
+      href: articles/crosswalkr.html
+  right:
+    - icon: fa-file-code-o
+      text: 'functions'
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: 'github'
+      href: https://github.com/btskinner/crosswalkr
+    - icon: fab fa-twitter
+      text: 'twitter'
+      href: https://twitter.com/btskinner
+

@@ -77,7 +77,6 @@ file_3 <- data.frame(s_id = c(7:9),
                      stringsAsFactors = FALSE)
 ```
 ```{r}
-
 df1 <- file_1 %>%
     rename(id = sid,
            last_name = lname,
@@ -201,7 +200,6 @@ df1$state <- encodefrom(file_1_, var = stat, stcrosswalk, raw = stabbr,
                         clean = stfips, label = stname)
 as_factor(df1)
 zap_labels(df1)
-
 ```
 
 ## Combined example: `dplyr` chain
@@ -210,7 +208,6 @@ The `renamefrom()` and `encodefrom()` functions can be combined in a
 `dplyr` chain.
 
 ```{r}
-
 df <- rbind(file_1 %>%
             tbl_df() %>%
             renamefrom(., crosswalk, file_1_raw, clean, label) %>%
@@ -229,7 +226,6 @@ df <- rbind(file_1 %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stname, stfips, stname)))
 
 df
-as_factor(df)
-            
+as_factor(df)            
 ```
 
