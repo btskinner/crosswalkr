@@ -28,6 +28,9 @@ navbar:
     - icon: fa-file-code-o
       text: 'functions'
       href: reference/index.html
+    - icon: fa-newspaper-o	
+      text: 'news'		
+      href: news/index.html
     - icon: fa-github fa-lg
       text: 'github'
       href: https://github.com/btskinner/crosswalkr
