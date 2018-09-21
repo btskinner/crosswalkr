@@ -93,7 +93,6 @@ renamefrom_ <- function(.data,
     else { cw <- cw_file }
 
     ## convert everything to character
-    factor_to_character <- function(x) if (is.factor(x)) as.character(x) else x
     .data[] <- lapply(.data, factor_to_character)
     cw[] <- lapply(cw, factor_to_character)
 

@@ -102,3 +102,6 @@ confirm_col <- function(cw, column, message_code) {
 
         }
 }
+
+## convert factor column to character
+factor_to_character <- function(x) if (is.factor(x)) as.character(x) else x
