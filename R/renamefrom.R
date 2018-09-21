@@ -93,8 +93,9 @@ renamefrom_ <- function(.data,
     else { cw <- cw_file }
 
     ## convert everything to character
-    .data[] <- lapply(.data, as.character)
-    cw[] <- lapply(cw, as.character)
+    factor_to_character <- function(x) if (is.factor(x)) as.character(x) else x
+    .data[] <- lapply(.data, factor_to_character)
+    cw[] <- lapply(cw, factor_to_character)
 
     ## confirm columns are in crosswalk
     confirm_col(cw, raw, 'm1')
