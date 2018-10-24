@@ -35,13 +35,13 @@ vec <- encodefrom(df, state, crosswalk_file, stname, stfips, stabbr)
 ## TESTS
 ## -----------------------------------------------------------------------------
 
-## test_that('Not proper labelled class', {
-##     ## skip until new haven is out
-##     skip_on_cran()
-##     skip_on_travis()
-##     expect_is(vec, 'haven_labelled')
+test_that('Not proper labelled class', {
+    ## skip until new haven is out
+    skip_on_cran()
+    skip_on_travis()
+    expect_is(vec, 'haven_labelled')
 
-## })
+})
 
 test_that('Failed to properly label vector', {
 
@@ -50,7 +50,7 @@ test_that('Failed to properly label vector', {
                    'MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH',
                    'OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA',
                    'WV','WI','WY')
-    lab_vals <- as.character(c(1:2,4:6,8:13,15:42,44:51,53:56))
+    lab_vals <- c(1:2,4:6,8:13,15:42,44:51,53:56)
     names(lab_vals) <- lab_names
 
     expect_equal(names(attr(vec, 'labels', exact = TRUE)), lab_names)
@@ -60,13 +60,13 @@ test_that('Failed to properly label vector', {
 
 test_that('Failed to assign proper values', {
 
-    act_vals <- c('48','22','25','12','41','30','53','5','47','28','49','1',
-                  '21','23','26','6','17','10','16','37','31','24','51','42',
-                  '44','45','19','33','20','32','46','8','4','2','36','40',
-                  '55','56','9','29','27','39','13','34','50','11','38','35',
-                  '54','18','15')
+    act_vals <- c(48L,22L,25L,12L,41L,30L,53L,5L,47L,28L,49L,1L,
+                  21L,23L,26L,6L,17L,10L,16L,37L,31L,24L,51L,42L,
+                  44L,45L,19L,33L,20L,32L,46L,8L,4L,2L,36L,40L,
+                  55L,56L,9L,29L,27L,39L,13L,34L,50L,11L,38L,35L,
+                  54L,18L,15L)
 
-    expect_equal(as.character(vec), act_vals)
+    expect_equal(haven::zap_labels(vec), act_vals)
 
 })
 

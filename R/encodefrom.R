@@ -120,6 +120,9 @@ encodefrom_ <- function(.data,
     mask <- match(val_vec, cw[[raw]], nomatch = 0)
     val_vec[mask != 0] <- cw[[clean]][mask]
 
+    ## convert new clean values to type found in crosswalk
+    class(val_vec) <- class(cw[[clean]])
+
     if (tibble::is_tibble(.data) && !ignore_tibble) {
 
         ## set up labels for labeller
