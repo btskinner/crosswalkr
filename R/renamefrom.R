@@ -159,16 +159,21 @@ renamefrom_ <- function(.data,
     ## erase old labels
     if (!keep_label) {
 
+        ## get extra column names (if they exist)
         extra_ <- names(.data)[!(names(.data) %in% names(label_list))]
 
-        null_label_list <- list()
-        for (i in 1:length(extra_)) {
-            null_label_list[extra_[i]] <- list(NULL)
+        ## if there are extra names...
+        if (!identical(extra_, character(0))) {
+
+            null_label_list <- list()
+            for (i in 1:length(extra_)) {
+                null_label_list[extra_[i]] <- list(NULL)
+            }
+
+            ## set to NULL
+            labelled::var_label(.data) <- null_label_list
+
         }
-
-        ## set to NULL
-        labelled::var_label(.data) <- null_label_list
-
     }
 
     ## return data frame
