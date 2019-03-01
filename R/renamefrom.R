@@ -105,23 +105,25 @@ renamefrom_ <- function(.data,
     check_dups(cw, raw, 'm1')
     check_dups(cw, clean, 'm1')
 
-    ## get starting names
-    names_ <- names(.data)
+    ## get starting names from dataset and crosswalk
+    names_d <- names(.data)
+    names_r <- cw[[raw]]
 
-    ## ignore case by setting names to lower
-    if (case_ignore) { names_ <- tolower(names_) }
+    ## ignore case by setting data and raw names to lower
+    if (case_ignore) {
+        names_d <- tolower(names_d)
+        names_r <- tolower(names_r)
+    }
 
     ## drop unmatched names
     if (drop_extra) {
-        .data <- .data[names_ %in% cw[[raw]]]
-
-        ## update names_
-        names_ <- names(.data)
-        if (case_ignore) { names_ <- tolower(names_) }
+        .data <- .data[names_d %in% names_r]
+        names_d <- names(.data)
+        if (case_ignore) { names_d <- tolower(names_d) }
     }
 
     ## apply new names, leaving unmatched old names alone
-    mask <- match(names_, cw[[raw]], nomatch = 0)
+    mask <- match(names_d, names_r, nomatch = 0)
     new_names <- cw[[clean]][mask]
     names(.data)[mask != 0] <- new_names
 
