@@ -12,3 +12,4 @@
 ^docs$
 ^_pkgdown\.yml$
 ^sticker$
+^CODE_OF_CONDUCT\.md$
