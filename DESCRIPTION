@@ -1,8 +1,8 @@
 Package: crosswalkr
 Title: Rename and Encode Data Frames Using External Crosswalk Files
-Version: 0.2.4
+Version: 0.2.5
 Authors@R: person("Benjamin", "Skinner",
-	          email = "btskinner@virginia.edu",
+	          email = "btskinner@coe.ufl.edu",
     	          role = c("aut", "cre"),
 		  comment = c(ORCID = "0000-0002-0337-7415"))
 Description: A pair of functions for renaming and encoding data frames

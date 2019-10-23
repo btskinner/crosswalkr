@@ -6,9 +6,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to crosswalkr • crosswalkr</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to crosswalkr">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://www.btskinner.me/crosswalkr/logo.png">
@@ -31,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crosswalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -85,13 +92,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to crosswalkr</h1>
                         <h4 class="author">Benjamin Skinner</h4>
             
-            <h4 class="date">2019-03-01</h4>
+            <h4 class="date">2019-10-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/btskinner/crosswalkr/blob/master/vignettes/crosswalkr.Rmd"><code>vignettes/crosswalkr.Rmd</code></a></small>
       <div class="hidden name"><code>crosswalkr.Rmd</code></div>
@@ -199,29 +207,29 @@
 </table>
 <p>It is clear that these files contain the same basic information, but neither the names nor encodings for <code>state</code> | <code>st</code> | <code>sta</code> are consistent.</p>
 <p>One solution is to just fix these one at a time before joining them. For example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(crosswalkr)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(labelled)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(haven)</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">df1 &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> sid,</a>
-<a class="sourceLine" id="cb2-3" title="3">           <span class="dt">last_name =</span> lname,</a>
-<a class="sourceLine" id="cb2-4" title="4">           <span class="dt">stabbr =</span> stat,</a>
-<a class="sourceLine" id="cb2-5" title="5">           <span class="dt">score =</span> t_score)</a>
-<a class="sourceLine" id="cb2-6" title="6"></a>
-<a class="sourceLine" id="cb2-7" title="7">df2 &lt;-<span class="st"> </span>file_<span class="dv">2</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> stu_id,</a>
-<a class="sourceLine" id="cb2-9" title="9">           <span class="dt">stabbr =</span> st,</a>
-<a class="sourceLine" id="cb2-10" title="10">           <span class="dt">score =</span> test_score) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character</a></span>(stabbr))</a>
-<a class="sourceLine" id="cb2-12" title="12"></a>
-<a class="sourceLine" id="cb2-13" title="13">df3 &lt;-<span class="st"> </span>file_<span class="dv">3</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> s_id,</a>
-<a class="sourceLine" id="cb2-15" title="15">           <span class="dt">stabbr =</span> sta,</a>
-<a class="sourceLine" id="cb2-16" title="16">           <span class="dt">last_name =</span> name)</a>
-<a class="sourceLine" id="cb2-17" title="17"></a>
-<a class="sourceLine" id="cb2-18" title="18">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(df1, df2, df3)</a>
-<a class="sourceLine" id="cb2-19" title="19">df</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(crosswalkr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(labelled)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(haven)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df1 &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> sid,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>           <span class="dt">last_name =</span> lname,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>           <span class="dt">stabbr =</span> stat,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>           <span class="dt">score =</span> t_score)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>df2 &lt;-<span class="st"> </span>file_<span class="dv">2</span> <span class="op">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> stu_id,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>           <span class="dt">stabbr =</span> st,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>           <span class="dt">score =</span> test_score) <span class="op">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(stabbr))</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>df3 &lt;-<span class="st"> </span>file_<span class="dv">3</span> <span class="op">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">id =</span> s_id,</span>
+<span id="cb2-15"><a href="#cb2-15"></a>           <span class="dt">stabbr =</span> sta,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>           <span class="dt">last_name =</span> name)</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a>df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(df1, df2, df3)</span>
+<span id="cb2-19"><a href="#cb2-19"></a>df</span></code></pre></div>
 <pre><code>##   id  last_name       stabbr score
 ## 1  1    Jackson           VA    74
 ## 2  2   Harrison           KY    86
@@ -289,18 +297,18 @@
 5. R data (<code>*.rdata</code>, <code>*.rda</code>, <code>*.rds</code>)<br>
 6. Stata data (<code>*.dta</code>)</li>
 </ol>
-<p>If given a string to the <code>cw_file</code> argument, <code><a href="../reference/renamefrom.html">renamefrom()</a></code> and <code><a href="../reference/encodefrom.html">encodefrom()</a></code> determine the type of file by its ending.</p>
+<p>If given a string to the <code>cw_file</code> argument, <code><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom()</a></code> and <code><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom()</a></code> determine the type of file by its ending.</p>
 </div>
 <div id="renaming" class="section level2">
 <h2 class="hasAnchor">
 <a href="#renaming" class="anchor"></a>Renaming</h2>
-<p>To rename using the <code><a href="../reference/renamefrom.html">renamefrom()</a></code> command:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">df1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(file_<span class="dv">1</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">1</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</a>
-<a class="sourceLine" id="cb4-2" title="2">df2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(file_<span class="dv">2</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">2</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</a>
-<a class="sourceLine" id="cb4-3" title="3">df3 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(file_<span class="dv">3</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">3</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(df1, df2, df3)</a>
-<a class="sourceLine" id="cb4-6" title="6">df</a></code></pre></div>
+<p>To rename using the <code><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom()</a></code> command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df1 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(file_<span class="dv">1</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">1</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>df2 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(file_<span class="dv">2</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">2</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>df3 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(file_<span class="dv">3</span>, <span class="dt">cw_file =</span> crosswalk, <span class="dt">raw =</span> file_<span class="dv">3</span>_raw, <span class="dt">clean =</span> clean, <span class="dt">label =</span> label)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(df1, df2, df3)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>df</span></code></pre></div>
 <pre><code>##   id  last_name       stabbr score
 ## 1  1    Jackson           VA    74
 ## 2  2   Harrison           KY    86
@@ -312,7 +320,7 @@
 ## 8  8      Grant South Dakota    82
 ## 9  9      Adams     Illinois    89</code></pre>
 <p>And check out the labels:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/labelled/topics/var_label">var_label</a></span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/pkg/labelled/man/var_label.html">var_label</a></span>(df)</span></code></pre></div>
 <pre><code>## $id
 ## [1] "Student ID"
 ## 
@@ -330,8 +338,8 @@
 <h2 class="hasAnchor">
 <a href="#encoding" class="anchor"></a>Encoding</h2>
 <p>These same example files have inconsistent encodings for state: one uses two-letter abbreviations, another the FIPS code, and another the full name. Again, instead of fixing each one at a time, a separate crosswalk for encoding these values could be used. The <code>crosswalkr</code> package includes a state-level crosswalk, <code>stcrosswalk</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(stcrosswalk)</a>
-<a class="sourceLine" id="cb8-2" title="2">stcrosswalk</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(stcrosswalk)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>stcrosswalk</span></code></pre></div>
 <pre><code>## # A tibble: 51 x 7
 ##    stfips stabbr stname             cenreg cenregnm cendiv cendivnm        
 ##     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;           
@@ -346,33 +354,33 @@
 ##  9     11 DC     District of Colum…      3 South         5 South Atlantic  
 ## 10     12 FL     Florida                 3 South         5 South Atlantic  
 ## # … with 41 more rows</code></pre>
-<p>The <code><a href="../reference/encodefrom.html">encodefrom()</a></code> function works much like <code><a href="../reference/renamefrom.html">renamefrom()</a></code>. The only difference is that a vector of encoded values is returned that can be added to an existing dataframe.</p>
-<p><code><a href="../reference/encodefrom.html">encodefrom()</a></code> returns either base R factors or labels depending on whether the input data frame is a tibble.</p>
+<p>The <code><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom()</a></code> function works much like <code><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom()</a></code>. The only difference is that a vector of encoded values is returned that can be added to an existing dataframe.</p>
+<p><code><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom()</a></code> returns either base R factors or labels depending on whether the input data frame is a tibble.</p>
 <div id="factor" class="section level4">
 <h4 class="hasAnchor">
 <a href="#factor" class="anchor"></a>factor</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw"><a href="../reference/encodefrom.html">encodefrom</a></span>(file_<span class="dv">1</span>, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr, <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)</a>
-<a class="sourceLine" id="cb10-2" title="2">df1</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom</a></span>(file_<span class="dv">1</span>, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr, <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>df1</span></code></pre></div>
 <pre><code>##   id last_name stabbr score    state
 ## 1  1   Jackson     VA    74 Virginia
 ## 2  2  Harrison     KY    86 Kentucky
 ## 3  3     Nixon     IL    78 Illinois</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(df1, class)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span>(df1, class)</span></code></pre></div>
 <pre><code>##          id   last_name      stabbr       score       state 
 ##   "integer" "character" "character"   "numeric"    "factor"</code></pre>
 </div>
 <div id="labelled-vector" class="section level4">
 <h4 class="hasAnchor">
 <a href="#labelled-vector" class="anchor"></a>labelled vector</h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">file_<span class="dv">1</span>_ &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>()</a>
-<a class="sourceLine" id="cb14-2" title="2">df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw"><a href="../reference/encodefrom.html">encodefrom</a></span>(file_<span class="dv">1</span>_, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr,</a>
-<a class="sourceLine" id="cb14-3" title="3">                        <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)</a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="kw"><a href="https://haven.tidyverse.org/reference/as_factor.html">as_factor</a></span>(df1)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>file_<span class="dv">1</span>_ &lt;-<span class="st"> </span>file_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>()</span>
+<span id="cb14-2"><a href="#cb14-2"></a>df1<span class="op">$</span>state &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom</a></span>(file_<span class="dv">1</span>_, <span class="dt">var =</span> stat, stcrosswalk, <span class="dt">raw =</span> stabbr,</span>
+<span id="cb14-3"><a href="#cb14-3"></a>                        <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stname)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="kw"><a href="https://haven.tidyverse.org/reference/as_factor.html">as_factor</a></span>(df1)</span></code></pre></div>
 <pre><code>##   id last_name stabbr score    state
 ## 1  1   Jackson     VA    74 Virginia
 ## 2  2  Harrison     KY    86 Kentucky
 ## 3  3     Nixon     IL    78 Illinois</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="https://haven.tidyverse.org/reference/zap_labels.html">zap_labels</a></span>(df1)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://haven.tidyverse.org/reference/zap_labels.html">zap_labels</a></span>(df1)</span></code></pre></div>
 <pre><code>##   id last_name stabbr score state
 ## 1  1   Jackson     VA    74    51
 ## 2  2  Harrison     KY    86    21
@@ -382,25 +390,25 @@
 <div id="combined-example-dplyr-chain" class="section level2">
 <h2 class="hasAnchor">
 <a href="#combined-example-dplyr-chain" class="anchor"></a>Combined example: <code>dplyr</code> chain</h2>
-<p>The <code><a href="../reference/renamefrom.html">renamefrom()</a></code> and <code><a href="../reference/encodefrom.html">encodefrom()</a></code> functions can be combined in a <code>dplyr</code> chain.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(file_<span class="dv">1</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="st">            </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">1</span>_raw, clean, label) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="../reference/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stabbr, stfips, stname)),</a>
-<a class="sourceLine" id="cb18-5" title="5"></a>
-<a class="sourceLine" id="cb18-6" title="6">            <span class="co">## append file 2</span></a>
-<a class="sourceLine" id="cb18-7" title="7">            file_<span class="dv">2</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-8" title="8"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-9" title="9"><span class="st">            </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">2</span>_raw, clean, label) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-10" title="10"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="../reference/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stfips, stfips, stname)),</a>
-<a class="sourceLine" id="cb18-11" title="11"></a>
-<a class="sourceLine" id="cb18-12" title="12">            <span class="co">## append file 3</span></a>
-<a class="sourceLine" id="cb18-13" title="13">            file_<span class="dv">3</span> <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-14" title="14"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-15" title="15"><span class="st">            </span><span class="kw"><a href="../reference/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">3</span>_raw, clean, label) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-16" title="16"><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="../reference/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stname, stfips, stname)))</a>
-<a class="sourceLine" id="cb18-17" title="17"></a>
-<a class="sourceLine" id="cb18-18" title="18">df</a></code></pre></div>
+<p>The <code><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom()</a></code> and <code><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom()</a></code> functions can be combined in a <code>dplyr</code> chain.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(file_<span class="dv">1</span> <span class="op">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="st">            </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">1</span>_raw, clean, label) <span class="op">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stabbr, stfips, stname)),</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a>            <span class="co">## append file 2</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>            file_<span class="dv">2</span> <span class="op">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="st">            </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">2</span>_raw, clean, label) <span class="op">%&gt;%</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stfips, stfips, stname)),</span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a>            <span class="co">## append file 3</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>            file_<span class="dv">3</span> <span class="op">%&gt;%</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html">tbl_df</a></span>() <span class="op">%&gt;%</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="st">            </span><span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/renamefrom.html">renamefrom</a></span>(., crosswalk, file_<span class="dv">3</span>_raw, clean, label) <span class="op">%&gt;%</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="st">            </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">stabbr =</span> <span class="kw"><a href="https://rdrr.io/pkg/crosswalkr/man/encodefrom.html">encodefrom</a></span>(., stabbr, stcrosswalk, stname, stfips, stname)))</span>
+<span id="cb18-17"><a href="#cb18-17"></a></span>
+<span id="cb18-18"><a href="#cb18-18"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
 ##      id last_name                     stabbr score
 ##   &lt;int&gt; &lt;chr&gt;                      &lt;int+lbl&gt; &lt;dbl&gt;
@@ -413,7 +421,7 @@
 ## 7     7 Tyler      38 [North Dakota]            91
 ## 8     8 Grant      46 [South Dakota]            82
 ## 9     9 Adams      17 [Illinois]                89</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="https://haven.tidyverse.org/reference/as_factor.html">as_factor</a></span>(df)            </a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://haven.tidyverse.org/reference/as_factor.html">as_factor</a></span>(df)            </span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
 ##      id last_name  stabbr               score
 ##   &lt;int&gt; &lt;chr&gt;      &lt;fct&gt;                &lt;dbl&gt;
@@ -430,6 +438,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -444,17 +453,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by <a href="https://www.btskinner.me">Benjamin Skinner</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

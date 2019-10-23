@@ -1,3 +1,21 @@
+# crosswalkr 0.2.5
+
+* increment for change in contact information
+
+# crosswalkr 0.2.4
+
+## Bug fix
+
+* Bug fix for #3 (h/t @ekatef), in which columns with uppercase names
+  were dropped by default due to internal conflict with `case_ignore`
+  and `drop_extra` options.
+
+# crosswalkr 0.2.3
+
+## Bug fix
+
+* Bug fix for issue #2 due to update of [labelled](https://github.com/larmarange/labelled) package to 2.1.0
+
 # crosswalkr 0.2.2
 
 * encoded vector now output in same class as clean values from
