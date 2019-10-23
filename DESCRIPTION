@@ -13,8 +13,7 @@ Description: A pair of functions for renaming and encoding data frames
 URL: https://github.com/btskinner/crosswalkr
 BugReports: https://github.com/btskinner/crosswalkr/issues   
 Depends: R (>= 3.3.0)
-Imports: dplyr,	
-	haven,
+Imports: haven,
 	labelled,
 	methods,
 	readr,
@@ -26,5 +25,6 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    dplyr
 VignetteBuilder: knitr
