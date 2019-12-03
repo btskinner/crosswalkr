@@ -2,5 +2,6 @@
 .Rproj.user
 .Rhistory
 .RData
+.Rproj
 builds/
 inst/doc
