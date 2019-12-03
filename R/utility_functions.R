@@ -71,7 +71,7 @@ check_dups <- function(cw, column, message_code) {
     if (anyDuplicated(cw[[column]])) {
 
         dups <- cw[[column]][duplicated(cw[[column]])]
-        stop(paste(c('The following',
+        warning(paste(c('The following',
                      out,
                      'in the',
                      column,
