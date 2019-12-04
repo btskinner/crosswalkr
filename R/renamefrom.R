@@ -102,8 +102,8 @@ renamefrom_ <- function(.data,
     if (!is.null(label)) { confirm_col(cw, label, 'm1') }
 
     ## verify that raw and clean are unique in crosswalk file (1:1 mapping)
-    check_dups(cw, raw, 'm1')
-    check_dups(cw, clean, 'm1')
+    check_dups(cw, raw, message_code1 = 'm1', message_code2 = 'm1', FALSE)
+    check_dups(cw, clean, message_code1 = 'm1', message_code2 = 'm1', FALSE)
 
     ## get starting names from dataset and crosswalk
     names_d <- names(.data)
