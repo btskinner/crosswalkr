@@ -100,7 +100,7 @@ encodefrom_ <- function(.data,
     confirm_col(cw, label, 'm1')
 
     ## verify that raw, clean, and label are unique in crosswalk file (1:1 mapping)
-    check_dups(cw, raw, 'm2', 'm1')
+    check_dups(cw, raw, 'm2', 'm1', FALSE)
     check_dups(cw, clean, 'm2', 'm2', TRUE)
     check_dups(cw, label, 'm2', 'm2', TRUE)
 
