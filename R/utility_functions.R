@@ -61,28 +61,38 @@ get_cw_file <- function(cw_file, delimiter = NULL, sheet = NULL) {
 }
 
 ## check for duplicates in crosswalk file
-check_dups <- function(cw, column, message_code) {
+check_dups <- function(cw, column, message_code1, message_code2, warn = FALSE) {
 
-    out <- switch(message_code,
+    out1 <- switch(message_code1,
                   m1 = 'values are duplicated',
                   m2 = 'code values are assigned to more than one label'
                   )
 
+    out2 <- switch(message_code2,
+                   m1 = 'Please specify a 1:1 mapping.',
+                   m2 = 'Consider specifying a 1:1 mapping.'
+    )
+
     if (anyDuplicated(cw[[column]])) {
 
         dups <- cw[[column]][duplicated(cw[[column]])]
-        warning(paste(c('The following',
-                     out,
+        msg <- paste(c('The following',
+                     out1,
                      'in the',
                      column,
                      'column:\n\n',
                      paste(dups, '\n'),
                      '\n',
-                     'Please specify a 1:1 mapping.'),
-                   collapse = ' '),
-             call. = FALSE)
+                     out2),
+                   collapse = ' ')
 
+    if(isTRUE(warn)) {
+        warning(msg)
+    }else{
+        stop(msg)
     }
+
+ }
 }
 
 ## confirm columns exist in crosswalk file

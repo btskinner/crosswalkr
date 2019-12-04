@@ -100,9 +100,9 @@ encodefrom_ <- function(.data,
     confirm_col(cw, label, 'm1')
 
     ## verify that raw, clean, and label are unique in crosswalk file (1:1 mapping)
-    check_dups(cw, raw, 'm2')
-    check_dups(cw, clean, 'm2')
-    check_dups(cw, label, 'm2')
+    check_dups(cw, raw, 'm2', 'm1')
+    check_dups(cw, clean, 'm2', 'm2', TRUE)
+    check_dups(cw, label, 'm2', 'm2', TRUE)
 
     ## ignore case by setting names and var to lower
     if (case_ignore) {
@@ -126,8 +126,8 @@ encodefrom_ <- function(.data,
     if (tibble::is_tibble(.data) && !ignore_tibble) {
 
         ## set up labels for labeller
-        val_labels <- methods::as(cw[[clean]], typeof(val_vec))
-        names(val_labels) <- cw[[label]]
+        val_labels <- methods::as(unique(cw[[clean]]), typeof(val_vec))
+        names(val_labels) <- unique(cw[[label]])
 
         ## label vector
         val_vec_l <- labelled::labelled(val_vec, labels = val_labels)
