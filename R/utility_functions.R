@@ -61,38 +61,44 @@ get_cw_file <- function(cw_file, delimiter = NULL, sheet = NULL) {
 }
 
 ## check for duplicates in crosswalk file
-check_dups <- function(cw, column, message_code1, message_code2, warn = FALSE) {
+check_dups <- function(cw, column_1, column_2, message_code_1, message_code_2, warn = FALSE) {
 
-    out1 <- switch(message_code1,
+    out1 <- switch(message_code_1,
                   m1 = 'values are duplicated',
-                  m2 = 'code values are assigned to more than one label'
+                  m2 = 'code values are duplicated'
                   )
 
-    out2 <- switch(message_code2,
+    out2 <- switch(message_code_2,
                    m1 = 'Please specify a 1:1 mapping.',
-                   m2 = 'Consider specifying a 1:1 mapping.'
+                   m2 = 'Check if this is intended.'
     )
 
-    if (anyDuplicated(cw[[column]])) {
+    if(!missing(column_2)) {
+     n_val_lab <- dplyr::n_distinct(paste(cw[[column_1]], cw[[column_2]]))
 
-        dups <- cw[[column]][duplicated(cw[[column]])]
+       if(n_val_lab != dplyr::n_distinct(cw[[column_1]]) |  n_val_lab != dplyr::n_distinct(cw[[column_2]])) {
+         stop("code values and labels do not match on a 1:1 basis") }
+     }
+
+    if (anyDuplicated(cw[[column_1]])) {
+
+        dups <- cw[[column_1]][duplicated(cw[[column_1]])]
         msg <- paste(c('The following',
                      out1,
                      'in the',
-                     column,
+                     column_1,
                      'column:\n\n',
                      paste(dups, '\n'),
                      '\n',
                      out2),
                    collapse = ' ')
 
-    if(isTRUE(warn)) {
-        warning(msg)
-    }else{
-        stop(msg)
+     if(isTRUE(warn)) {
+         warning(msg)
+      }else{
+         stop(msg)
     }
-
- }
+    }
 }
 
 ## confirm columns exist in crosswalk file

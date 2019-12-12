@@ -100,9 +100,8 @@ encodefrom_ <- function(.data,
     confirm_col(cw, label, 'm1')
 
     ## verify that raw, clean, and label are unique in crosswalk file (1:1 mapping)
-    check_dups(cw, raw, 'm2', 'm1', FALSE)
-    check_dups(cw, clean, 'm2', 'm2', TRUE)
-    check_dups(cw, label, 'm2', 'm2', TRUE)
+    check_dups(cw = cw, column_1 = raw, message_code_1 = 'm2',  message_code_2 = 'm1', warn =FALSE)
+    check_dups(cw = cw, column_1 = clean, column_2 = label, message_code_1 = 'm2', message_code_2 = 'm2', warn = TRUE)
 
     ## ignore case by setting names and var to lower
     if (case_ignore) {
