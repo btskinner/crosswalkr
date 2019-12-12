@@ -3,7 +3,6 @@
 \docType{package}
 \name{crosswalkr}
 \alias{crosswalkr}
-\alias{crosswalkr-package}
 \title{crosswalkr: Rename and Encode Data Frames Using External Crosswalk Files}
 \description{
 A pair of functions for renaming and encoding data frames using

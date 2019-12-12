@@ -12,3 +12,11 @@ test_that('Failed to catch duplicate values in column', {
 
 })
 
+## get crosswalk
+cw <- get_cw_file('./testdata/cw_dup_2.csv')
+
+test_that('Failed to catch duplicate values across columns', {
+
+    expect_error(check_dups(cw, 'b', 'c', 'm3'))
+
+})

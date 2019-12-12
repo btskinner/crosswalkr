@@ -5,11 +5,31 @@
 \alias{encodefrom_}
 \title{Encode data frame column using external crosswalk file.}
 \usage{
-encodefrom(.data, var, cw_file, raw, clean, label, delimiter = NULL,
-  sheet = NULL, case_ignore = TRUE, ignore_tibble = FALSE)
+encodefrom(
+  .data,
+  var,
+  cw_file,
+  raw,
+  clean,
+  label,
+  delimiter = NULL,
+  sheet = NULL,
+  case_ignore = TRUE,
+  ignore_tibble = FALSE
+)
 
-encodefrom_(.data, var, cw_file, raw, clean, label, delimiter = NULL,
-  sheet = NULL, case_ignore = TRUE, ignore_tibble = FALSE)
+encodefrom_(
+  .data,
+  var,
+  cw_file,
+  raw,
+  clean,
+  label,
+  delimiter = NULL,
+  sheet = NULL,
+  case_ignore = TRUE,
+  ignore_tibble = FALSE
+)
 }
 \arguments{
 \item{.data}{Data frame or tbl_df}
