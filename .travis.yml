@@ -11,6 +11,6 @@ matrix:
 notifications:
   email:
     recipients:
-      - btskinner@virginia.edu
+      - btskinner@coe.ufl.edu
     on_success: change
     on_failure: change
