@@ -5,13 +5,33 @@
 \alias{renamefrom_}
 \title{Rename data frame columns using external crosswalk file.}
 \usage{
-renamefrom(.data, cw_file, raw, clean, label = NULL, delimiter = NULL,
-  sheet = NULL, drop_extra = TRUE, case_ignore = TRUE,
-  keep_label = FALSE, name_label = FALSE)
+renamefrom(
+  .data,
+  cw_file,
+  raw,
+  clean,
+  label = NULL,
+  delimiter = NULL,
+  sheet = NULL,
+  drop_extra = TRUE,
+  case_ignore = TRUE,
+  keep_label = FALSE,
+  name_label = FALSE
+)
 
-renamefrom_(.data, cw_file, raw, clean, label = NULL, delimiter = NULL,
-  sheet = NULL, drop_extra = TRUE, case_ignore = TRUE,
-  keep_label = FALSE, name_label = FALSE)
+renamefrom_(
+  .data,
+  cw_file,
+  raw,
+  clean,
+  label = NULL,
+  delimiter = NULL,
+  sheet = NULL,
+  drop_extra = TRUE,
+  case_ignore = TRUE,
+  keep_label = FALSE,
+  name_label = FALSE
+)
 }
 \arguments{
 \item{.data}{Data frame or tbl_df}
