@@ -1,3 +1,8 @@
+# crosswalkr 0.2.6
+
+* allow duplicated clean values and labels so raw values can be
+  collapsed
+
 # crosswalkr 0.2.5
 
 * increment for change in contact information

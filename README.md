@@ -33,6 +33,8 @@ Usage
 -----
 
     library(crosswalkr)
+    library(dplyr)
+    library(haven)
 
     ## starting data frame
     df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
@@ -119,7 +121,7 @@ the data frame.
     ##  8     10 DE     Delaware                  3 South          5 South Atlantic    
     ##  9     11 DC     District of Columbia      3 South          5 South Atlantic    
     ## 10     12 FL     Florida                   3 South          5 South Atlantic    
-    ## # ... with 41 more rows
+    ## # … with 41 more rows
 
 Create a new column with factor-encoded values
 
@@ -134,7 +136,7 @@ Create a new column with factor-encoded values
 Create a new column with labelled values.
 
     ## convert to tbl_df
-    df <- tibble::as_data_frame(df)
+    df <- tbl_df(df)
     df$state3 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 
 Create new column with factor-encoded values (ignores the fact that `df`
@@ -144,22 +146,22 @@ is a tibble)
 
 Show factors with labels:
 
-    haven::as_factor(df)
+    as_factor(df)
 
     ## # A tibble: 3 x 6
     ##   state     stfips cenregnm state2 state3 state4
-    ##   <fct>      <dbl> <fct>    <fct>  <chr>  <fct> 
-    ## 1 Kentucky      21 South    KY     21     KY    
-    ## 2 Tennessee     47 South    TN     47     TN    
-    ## 3 Virginia      51 South    VA     51     VA
+    ##   <fct>      <dbl> <fct>    <fct>  <fct>  <fct> 
+    ## 1 Kentucky      21 South    KY     KY     KY    
+    ## 2 Tennessee     47 South    TN     TN     TN    
+    ## 3 Virginia      51 South    VA     VA     VA
 
 Show factors without labels:
 
-    haven::zap_labels(df)
+    zap_labels(df)
 
     ## # A tibble: 3 x 6
     ##   state     stfips cenregnm state2 state3 state4
-    ##   <fct>      <dbl> <fct>    <fct>  <chr>  <fct> 
-    ## 1 Kentucky      21 South    KY     21     KY    
-    ## 2 Tennessee     47 South    TN     47     TN    
-    ## 3 Virginia      51 South    VA     51     VA
+    ##   <fct>      <dbl> <fct>    <fct>   <int> <fct> 
+    ## 1 Kentucky      21 South    KY         21 KY    
+    ## 2 Tennessee     47 South    TN         47 TN    
+    ## 3 Virginia      51 South    VA         51 VA

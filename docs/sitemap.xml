@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//index.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//index.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//reference/crosswalkr.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//reference/crosswalkr.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//reference/encodefrom.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//reference/encodefrom.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//reference/renamefrom.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//reference/renamefrom.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//reference/stcrosswalk.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//reference/stcrosswalk.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.me/crosswalkr//articles/crosswalkr.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr//articles/collapse.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr//articles/crosswalkr.html</loc>
   </url>
 </urlset>

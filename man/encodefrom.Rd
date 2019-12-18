@@ -87,7 +87,7 @@ df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  stfips = c(21,47,51),
                  cenregnm = c('South','South','South'))
 
-df_tbl <- tibble::as_data_frame(df)
+df_tbl <- tibble::as_tibble(df)
 
 cw <- get(data(stcrosswalk))
 

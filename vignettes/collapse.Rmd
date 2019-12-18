@@ -1,0 +1,97 @@
+---
+title: "Collapsing"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    css: vignette.css
+vignette: >
+  %\VignetteIndexEntry{Collapsing using a crosswalk}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{dplyr, haven, labelled}
+---
+
+In some situations, you may want to use `encodefrom()` to collapse
+values, that is, group unique raw values into a smaller set of clean
+values / labels. For example, say you have the following data set,
+which gives each state's census division number and name:
+
+#### Data
+
+|id|state|cendiv|cendiv_name|
+|:-|:---:|:----:|:----------|
+|1|AL|6|East South Central|
+|2|AK|9|Pacific|
+|3|AZ|8|Mountain|
+|4|AR|7|West South Central|
+|5|CA|9|Pacific|
+|6|CO|8|Mountain|
+|7|CT|1|New England|
+|8|DE|5|South Atlantic|
+|10|FL|5|South Atlantic|
+|12|HI|9|Pacific|
+|14|IL|3|East North Central|
+|15|IN|3|East North Central|
+|16|IA|4|West North Central|
+|31|NJ|2|Middle Atlantic|
+|33|NY|2|Middle Atlantic|
+
+Rather than using the nine census divisions, you would rather group
+states by their regions. You have the following crosswalk:
+
+#### Crosswalk
+|cendiv|cenreg|cenregnm|
+|:----:|:----:|:-------|
+|1|1|Northeast|
+|2|1|Northeast|
+|3|2|Midwest|
+|4|2|Midwest|
+|5|3|South|
+|6|3|South|
+|7|3|South|
+|8|4|West| 
+|9|4|West|
+
+As long as
+
+1. `raw` values are unique in the crosswalk
+2. `clean` and `label` columns have a 1:1 match
+
+Then you can use `encodefrom()` to collapse categories as you move
+from raw to clean values.
+
+```{r, message = FALSE}
+library(crosswalkr)
+library(dplyr)
+library(haven)
+```
+
+```{r}
+## data
+df <- tibble(id = c(1:8,10,12,14:16,31,33),
+             state = c('AL','AK','AZ','AR','CA','CO','CT','DE','FL','HI',
+                       'IL','IN','IA','NJ','NY'),
+			 cendiv = c(6,9,8,7,9,8,1,5,5,9,3,3,4,2,2),
+			 cendiv_name = c('East South Central','Pacific','Mountain',
+                             'West South Central','Pacific','Mountain','New England',
+                             'South Atlantic','South Atlantic','Pacific',
+                             'East North Central','East North Central',
+                             'West North Central','Middle Atlantic','Middle Atlantic'))
+			 
+## crosswalk
+cw <- tibble(cendiv = 1:9,
+             cenreg = c(1,1,2,2,3,3,3,4,4),
+             cenregnm = c('Northeast','Northeast','Midwest','Midwest',
+                          'South','South','South','West','West'))
+```
+
+```{r}
+## encode new column
+df <- df %>%
+    mutate(cenreg = encodefrom(., var = cendiv, cw_file = cw, raw = cendiv,
+                               clean = cenreg, label = cenregnm))
+```
+```{r}
+df
+```
+

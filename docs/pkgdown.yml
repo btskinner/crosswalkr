@@ -1,9 +1,10 @@
-pandoc: 2.7.3
+pandoc: '2.9'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  collapse: collapse.html
   crosswalkr: crosswalkr.html
 urls:
-  reference: https://www.btskinner.me/crosswalkr//reference
-  article: https://www.btskinner.me/crosswalkr//articles
+  reference: https://www.btskinner.io/crosswalkr//reference
+  article: https://www.btskinner.io/crosswalkr//articles
 

@@ -1,8 +1,8 @@
-url: https://www.btskinner.me/crosswalkr/
+url: https://www.btskinner.io/crosswalkr/
 
 authors:
   Benjamin Skinner:
-    href: https://www.btskinner.me
+    href: https://www.btskinner.io
 
 reference:
   - title: Rename variables
@@ -24,6 +24,8 @@ navbar:
       href: index.html
     - text: 'Get started'
       href: articles/crosswalkr.html
+    - text: 'Collapsing'
+      href: articles/collapse.html
   right:
     - icon: fa-file-code-o
       text: 'functions'
