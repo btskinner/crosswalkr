@@ -218,7 +218,13 @@
 <p>Create a new column with labelled values.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## convert to tbl_df</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>df &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(df)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>df<span class="op">$</span>state3 &lt;-<span class="st"> </span><span class="kw">encodefrom</span>(df, <span class="dt">var =</span> state, <span class="dt">cw_file =</span> cw, <span class="dt">raw =</span> stname, <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stabbr)</span></code></pre></div>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">## Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">## Please use `tibble::as_tibble()` instead.</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">## This warning is displayed once every 8 hours.</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">## Call `lifecycle::last_warnings()` to see where this warning was generated.</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a>df<span class="op">$</span>state3 &lt;-<span class="st"> </span><span class="kw">encodefrom</span>(df, <span class="dt">var =</span> state, <span class="dt">cw_file =</span> cw, <span class="dt">raw =</span> stname, <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stabbr)</span></code></pre></div>
 <p>Create new column with factor-encoded values (ignores the fact that <code>df</code> is a tibble)</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df<span class="op">$</span>state4 &lt;-<span class="st"> </span><span class="kw">encodefrom</span>(df, <span class="dt">var =</span> state, <span class="dt">cw_file =</span> cw, <span class="dt">raw =</span> stname, <span class="dt">clean =</span> stfips, <span class="dt">label =</span> stabbr, <span class="dt">ignore_tibble =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>Show factors with labels:</p>
@@ -226,7 +232,7 @@
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co">## # A tibble: 3 x 6</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="co">##   state     stfips cenregnm state2 state3 state4</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">##   &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; </span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">##   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;  &lt;fct&gt;  &lt;fct&gt; </span></span>
 <span id="cb11-6"><a href="#cb11-6"></a><span class="co">## 1 Kentucky      21 South    KY     KY     KY    </span></span>
 <span id="cb11-7"><a href="#cb11-7"></a><span class="co">## 2 Tennessee     47 South    TN     TN     TN    </span></span>
 <span id="cb11-8"><a href="#cb11-8"></a><span class="co">## 3 Virginia      51 South    VA     VA     VA</span></span></code></pre></div>
@@ -235,7 +241,7 @@
 <span id="cb12-2"><a href="#cb12-2"></a></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co">## # A tibble: 3 x 6</span></span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="co">##   state     stfips cenregnm state2 state3 state4</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co">##   &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; </span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">##   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;   &lt;int&gt; &lt;fct&gt; </span></span>
 <span id="cb12-6"><a href="#cb12-6"></a><span class="co">## 1 Kentucky      21 South    KY         21 KY    </span></span>
 <span id="cb12-7"><a href="#cb12-7"></a><span class="co">## 2 Tennessee     47 South    TN         47 TN    </span></span>
 <span id="cb12-8"><a href="#cb12-8"></a><span class="co">## 3 Virginia      51 South    VA         51 VA</span></span></code></pre></div>
@@ -281,7 +287,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/btskinner/crosswalkr"><img src="https://travis-ci.org/btskinner/crosswalkr.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://github.com/btskinner/crosswalkr/actions"><img src="https://github.com/btskinner/crosswalkr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://github.com/btskinner/crosswalkr"><img src="https://img.shields.io/github/release/btskinner/crosswalkr.svg" alt="GitHub release"></a></li>
 <li><a href="http://cran.r-project.org/package=crosswalkr"><img src="http://www.r-pkg.org/badges/version/crosswalkr" alt="CRAN_Status_Badge"></a></li>
 </ul>
