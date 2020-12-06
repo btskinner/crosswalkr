@@ -106,7 +106,7 @@ df
 Create a new column with labelled values.
 ```{r}
 ## convert to tbl_df
-df <- tbl_df(df)
+df <- tibble::as_tibble(df)
 df$state3 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 ```
 

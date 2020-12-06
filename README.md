@@ -132,13 +132,7 @@ Create a new column with factor-encoded values
 Create a new column with labelled values.
 
     ## convert to tbl_df
-    df <- tbl_df(df)
-
-    ## Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.
-    ## Please use `tibble::as_tibble()` instead.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_warnings()` to see where this warning was generated.
-
+    df <- tibble::as_tibble(df)
     df$state3 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 
 Create new column with factor-encoded values (ignores the fact that `df`
