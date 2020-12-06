@@ -1,14 +1,12 @@
-crosswalkr <img src="man/figures/logo.png" align="right" />
-===========================================================
+# crosswalkr <img src="man/figures/logo.png" align="right" />
 
-[![Travis-CI Build
-Status](https://travis-ci.org/btskinner/crosswalkr.svg?branch=master)](https://travis-ci.org/btskinner/crosswalkr)
+[![R build
+status](https://github.com/btskinner/crosswalkr/workflows/R-CMD-check/badge.svg)](https://github.com/btskinner/crosswalkr/actions)
 [![GitHub
 release](https://img.shields.io/github/release/btskinner/crosswalkr.svg)](https://github.com/btskinner/crosswalkr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/crosswalkr)](http://cran.r-project.org/package=crosswalkr)
 
-Overview
---------
+## Overview
 
 This package offers a pair of functions, `renamefrom()` and
 `encodefrom()`, for renaming and encoding data frames using external
@@ -18,8 +16,7 @@ variables consistently across files. Based on `renamefrom` and
 `encodefrom` [Stata commands written by Sally Hudson and
 team](https://github.com/slhudson/rename-and-encode).
 
-Installation
-------------
+## Installation
 
 Install the latest release version from CRAN with
 
@@ -29,8 +26,7 @@ Install the latest development version from Github with
 
     devtools::install_github('btskinner/crosswalkr')
 
-Usage
------
+## Usage
 
     library(crosswalkr)
     library(dplyr)
@@ -137,6 +133,12 @@ Create a new column with labelled values.
 
     ## convert to tbl_df
     df <- tbl_df(df)
+
+    ## Warning: `tbl_df()` is deprecated as of dplyr 1.0.0.
+    ## Please use `tibble::as_tibble()` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_warnings()` to see where this warning was generated.
+
     df$state3 <- encodefrom(df, var = state, cw_file = cw, raw = stname, clean = stfips, label = stabbr)
 
 Create new column with factor-encoded values (ignores the fact that `df`
@@ -150,7 +152,7 @@ Show factors with labels:
 
     ## # A tibble: 3 x 6
     ##   state     stfips cenregnm state2 state3 state4
-    ##   <fct>      <dbl> <fct>    <fct>  <fct>  <fct> 
+    ##   <chr>      <dbl> <chr>    <fct>  <fct>  <fct> 
     ## 1 Kentucky      21 South    KY     KY     KY    
     ## 2 Tennessee     47 South    TN     TN     TN    
     ## 3 Virginia      51 South    VA     VA     VA
@@ -161,7 +163,7 @@ Show factors without labels:
 
     ## # A tibble: 3 x 6
     ##   state     stfips cenregnm state2 state3 state4
-    ##   <fct>      <dbl> <fct>    <fct>   <int> <fct> 
+    ##   <chr>      <dbl> <chr>    <fct>   <int> <fct> 
     ## 1 Kentucky      21 South    KY         21 KY    
     ## 2 Tennessee     47 South    TN         47 TN    
     ## 3 Virginia      51 South    VA         51 VA

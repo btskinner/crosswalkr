@@ -9,7 +9,8 @@ output: md_document
 options(width = 100)
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/btskinner/crosswalkr.svg?branch=master)](https://travis-ci.org/btskinner/crosswalkr)
+[![R build
+status](https://github.com/btskinner/crosswalkr/workflows/R-CMD-check/badge.svg)](https://github.com/btskinner/crosswalkr/actions)
 [![GitHub release](https://img.shields.io/github/release/btskinner/crosswalkr.svg)](https://github.com/btskinner/crosswalkr)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/crosswalkr)](http://cran.r-project.org/package=crosswalkr)
 
