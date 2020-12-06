@@ -6,7 +6,6 @@
 \.DS_Store$
 ^README\.md$
 ^README\.Rmd$
-^.travis\.yml$
 ^builds$
 ^data-raw$
 ^docs$
@@ -15,3 +14,4 @@
 ^sticker$
 ^CODE_OF_CONDUCT\.md$
 ^crosswalkr\.Rproj$
+^\.github$
