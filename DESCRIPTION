@@ -1,23 +1,10 @@
 Package: crosswalkr
 Title: Rename and Encode Data Frames Using External Crosswalk Files
-<<<<<<< Updated upstream
 Version: 0.3.0
 Authors@R: person("Benjamin", "Skinner",
            email = "btskinner@coe.ufl.edu",
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0337-7415"))
-=======
-Version: 0.2.5
-Authors@R: person("Benjamin", "Skinner",
-	          email = "btskinner@coe.ufl.edu",
-    	          role = c("aut", "cre"),
-		  comment = c(ORCID = "0000-0002-0337-7415"))
->>>>>>> Stashed changes
-Description: A pair of functions for renaming and encoding data frames
-             using external crosswalk files. It is especially useful when
-             constructing master data sets from multiple smaller data
-             sets that do not name or encode variables consistently
-             across files. Based on similar commands in 'Stata'.
 URL: https://github.com/btskinner/crosswalkr
 BugReports: https://github.com/btskinner/crosswalkr/issues   
 Depends: R (>= 3.3.0)
