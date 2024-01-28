@@ -3,6 +3,7 @@
 \docType{package}
 \name{crosswalkr}
 \alias{crosswalkr}
+\alias{crosswalkr-package}
 \title{crosswalkr: Rename and Encode Data Frames Using External Crosswalk Files}
 \description{
 A pair of functions for renaming and encoding data frames using
@@ -11,3 +12,16 @@ master data sets from multiple smaller data sets that do not name
 or encode variables consistently across files. Based on
 -renamefrom- and -encodefrom- Stata commands.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/btskinner/crosswalkr}
+  \item Report bugs at \url{https://github.com/btskinner/crosswalkr/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Benjamin Skinner \email{btskinner@coe.ufl.edu} (\href{https://orcid.org/0000-0002-0337-7415}{ORCID})
+
+}
+\keyword{internal}

@@ -77,11 +77,11 @@ Encode data frame column using external crosswalk file.
 }
 \section{Functions}{
 \itemize{
-\item \code{encodefrom_}: Standard evaluation version of
+\item \code{encodefrom_()}: Standard evaluation version of
 \code{\link{encodefrom}} (\code{var}, \code{raw}, \code{clean},
 and \code{label} must be strings when using this version)
-}}
 
+}}
 \examples{
 df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  stfips = c(21,47,51),

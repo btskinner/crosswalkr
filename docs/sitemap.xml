@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//index.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/404.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//reference/crosswalkr.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//reference/encodefrom.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//reference/renamefrom.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/articles/collapse.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//reference/stcrosswalk.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/articles/crosswalkr.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//articles/collapse.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://www.btskinner.io/crosswalkr//articles/crosswalkr.html</loc>
+    <loc>https://www.btskinner.io/crosswalkr/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/reference/crosswalkr.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/reference/encodefrom.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/reference/renamefrom.html</loc>
+  </url>
+  <url>
+    <loc>https://www.btskinner.io/crosswalkr/reference/stcrosswalk.html</loc>
   </url>
 </urlset>

@@ -5,7 +5,7 @@ output:
   rmarkdown::html_vignette:
     css: vignette.css
 vignette: >
-  %\VignetteIndexEntry{Collapsing using a crosswalk}
+  %\VignetteIndexEntry{Collapsing}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
   %\VignetteDepends{dplyr, haven, labelled}

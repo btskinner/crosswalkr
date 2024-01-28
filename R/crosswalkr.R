@@ -6,6 +6,7 @@
 #' or encode variables consistently across files. Based on
 #' -renamefrom- and -encodefrom- Stata commands.
 #'
-#' @docType package
 #' @name crosswalkr
-NULL
+#' @aliases crosswalkr-package
+#' @keywords internal
+"_PACKAGE"

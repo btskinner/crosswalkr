@@ -84,11 +84,11 @@ Rename data frame columns using external crosswalk file.
 }
 \section{Functions}{
 \itemize{
-\item \code{renamefrom_}: Standard evaluation version of
+\item \code{renamefrom_()}: Standard evaluation version of
 \code{\link{renamefrom}} (\code{raw}, \code{clean}, and
 \code{label} must be strings when using this version)
-}}
 
+}}
 \examples{
 df <- data.frame(state = c('Kentucky','Tennessee','Virginia'),
                  fips = c(21,47,51),

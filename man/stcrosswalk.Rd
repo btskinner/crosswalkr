@@ -4,7 +4,8 @@
 \name{stcrosswalk}
 \alias{stcrosswalk}
 \title{State crosswalk data set.}
-\format{A data frame with 51 rows and 7 variables:
+\format{
+A data frame with 51 rows and 7 variables:
 \describe{
   \item{stfips}{Two-digit state FIPS codes}
   \item{stabbr}{Two-letter state abbreviation}
@@ -13,7 +14,8 @@
   \item{cenregnm}{Census region name}
   \item{cendiv}{Census division number}
   \item{cendivnm}{Census division name}
-}}
+}
+}
 \usage{
 stcrosswalk
 }
