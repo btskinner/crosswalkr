@@ -14,9 +14,10 @@ reference:
     contents:
     - starts_with('encode')
   - title: Data
-    desc: Example crosswalk
+    desc: Example crosswalks
     contents:
     - stcrosswalk
+    - sttercrosswalk
 
 navbar:
   left:
