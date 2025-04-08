@@ -1,3 +1,7 @@
+# crosswalkr 3.0.0
+
+* added new data file, sttercrosswalk, that includes territories and jurisdictions
+
 # crosswalkr 0.2.6
 
 * allow duplicated clean values and labels so raw values can be
