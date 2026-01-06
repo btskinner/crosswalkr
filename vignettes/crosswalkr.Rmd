@@ -196,7 +196,7 @@ sapply(df1, class)
 ```
 #### labelled vector
 ```{r}
-file_1_ <- file_1 %>% tbl_df()
+file_1_ <- file_1 %>% tibble::as_tibble()
 df1$state <- encodefrom(file_1_, var = stat, stcrosswalk, raw = stabbr,
                         clean = stfips, label = stname)
 as_factor(df1)
@@ -210,19 +210,19 @@ The `renamefrom()` and `encodefrom()` functions can be combined in a
 
 ```{r}
 df <- rbind(file_1 %>%
-            tbl_df() %>%
+            tibble::as_tibble() %>%
             renamefrom(., crosswalk, file_1_raw, clean, label) %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stabbr, stfips, stname)),
 
             ## append file 2
             file_2 %>%
-            tbl_df() %>%
+            tibble::as_tibble() %>%
             renamefrom(., crosswalk, file_2_raw, clean, label) %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stfips, stfips, stname)),
 
             ## append file 3
             file_3 %>%
-            tbl_df() %>%
+            tibble::as_tibble() %>%
             renamefrom(., crosswalk, file_3_raw, clean, label) %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stname, stfips, stname)))
 
