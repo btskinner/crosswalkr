@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to crosswalkr • crosswalkr</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -103,7 +102,7 @@
                         <h4 data-toc-skip class="author">Benjamin
 Skinner</h4>
             
-            <h4 data-toc-skip class="date">2025-04-08</h4>
+            <h4 data-toc-skip class="date">2026-01-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/btskinner/crosswalkr/blob/main/vignettes/crosswalkr.Rmd" class="external-link"><code>vignettes/crosswalkr.Rmd</code></a></small>
       <div class="hidden name"><code>crosswalkr.Rmd</code></div>
@@ -419,20 +418,15 @@ depending on whether the input data frame is a tibble.</p>
 <h4 id="labelled-vector">labelled vector<a class="anchor" aria-label="anchor" href="#labelled-vector"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">file_1_</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html" class="external-link">tbl_df</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `tibble::as_tibble()` instead.</span></span>
-<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df1</span><span class="op">$</span><span class="va">state</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">file_1_</span>, var <span class="op">=</span> <span class="va">stat</span>, <span class="va">stcrosswalk</span>, raw <span class="op">=</span> <span class="va">stabbr</span>,</span>
+<code class="sourceCode R"><span><span class="va">file_1_</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">df1</span><span class="op">$</span><span class="va">state</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">file_1_</span>, var <span class="op">=</span> <span class="va">stat</span>, <span class="va">stcrosswalk</span>, raw <span class="op">=</span> <span class="va">stabbr</span>,</span>
 <span>                        clean <span class="op">=</span> <span class="va">stfips</span>, label <span class="op">=</span> <span class="va">stname</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html" class="external-link">as_factor</a></span><span class="op">(</span><span class="va">df1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   id last_name stabbr score    state</span></span>
 <span><span class="co">## 1  1   Jackson     VA    74 Virginia</span></span>
 <span><span class="co">## 2  2  Harrison     KY    86 Kentucky</span></span>
 <span><span class="co">## 3  3     Nixon     IL    78 Illinois</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://haven.tidyverse.org/reference/zap_labels.html" class="external-link">zap_labels</a></span><span class="op">(</span><span class="va">df1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   id last_name stabbr score state</span></span>
 <span><span class="co">## 1  1   Jackson     VA    74    51</span></span>
@@ -445,37 +439,25 @@ depending on whether the input data frame is a tibble.</p>
 </h2>
 <p>The <code><a href="../reference/renamefrom.html">renamefrom()</a></code> and <code><a href="../reference/encodefrom.html">encodefrom()</a></code> functions
 can be combined in a <code>dplyr</code> chain.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html" class="external-link">tbl_df</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_1_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stabbr</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
 <span></span>
 <span>            <span class="co">## append file 2</span></span>
 <span>            <span class="va">file_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html" class="external-link">tbl_df</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_2_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stfips</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
 <span></span>
 <span>            <span class="co">## append file 3</span></span>
 <span>            <span class="va">file_3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl_df.html" class="external-link">tbl_df</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_3_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stname</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `tibble::as_tibble()` instead.</span></span>
-<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
-<pre><code><span><span class="co">## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `tibble::as_tibble()` instead.</span></span>
-<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
-<pre><code><span><span class="co">## Warning: `tbl_df()` was deprecated in dplyr 1.0.0.</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `tibble::as_tibble()` instead.</span></span>
-<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
-<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span></span></code></pre></div>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stname</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
 <span><span class="co">##      id last_name  stabbr                    score</span></span>
 <span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int+lbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -488,7 +470,7 @@ can be combined in a <code>dplyr</code> chain.</p>
 <span><span class="co">## <span style="color: #BCBCBC;">7</span>     7 Tyler      38<span style="color: #949494;"> [North Dakota]</span>            91</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">8</span>     8 Grant      46<span style="color: #949494;"> [South Dakota]</span>            82</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">9</span>     9 Adams      17<span style="color: #949494;"> [Illinois]</span>                89</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html" class="external-link">as_factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>            </span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>
 <span><span class="co">##      id last_name  stabbr               score</span></span>
@@ -520,7 +502,7 @@ can be combined in a <code>dplyr</code> chain.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
