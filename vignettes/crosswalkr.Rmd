@@ -215,21 +215,21 @@ The `renamefrom()` and `encodefrom()` functions can be combined in a
 ```{r}
 df <- rbind(file_1 |>
             tibble::as_tibble() |>
-            renamefrom(., crosswalk, file_1_raw, clean, label) |>
+            renamefrom(crosswalk, file_1_raw, clean, label)  %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stabbr, stfips, 
                                         stname)),
 
             ## append file 2
             file_2 |>
             tibble::as_tibble() |>
-            renamefrom(., crosswalk, file_2_raw, clean, label) |>
+            renamefrom(crosswalk, file_2_raw, clean, label) %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stfips, stfips, 
                                         stname)),
 
             ## append file 3
             file_3 |>
             tibble::as_tibble() |>
-            renamefrom(., crosswalk, file_3_raw, clean, label) |>
+            renamefrom(crosswalk, file_3_raw, clean, label) %>%
             mutate(stabbr = encodefrom(., stabbr, stcrosswalk, stname, stfips, 
                                         stname)))
 

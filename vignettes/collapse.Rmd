@@ -88,7 +88,7 @@ cw <- tibble(cendiv = 1:9,
 
 ```{r}
 ## encode new column
-df <- df |> 
+df <- df %>% 
     mutate(cenreg = encodefrom(., var = cendiv, cw_file = cw, raw = cendiv,
                                clean = cenreg, label = cenregnm))
 ```
