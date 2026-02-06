@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crosswalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@
                         <h4 data-toc-skip class="author">Benjamin
 Skinner</h4>
             
-            <h4 data-toc-skip class="date">2026-01-16</h4>
+            <h4 data-toc-skip class="date">2026-02-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/btskinner/crosswalkr/blob/main/vignettes/crosswalkr.Rmd" class="external-link"><code>vignettes/crosswalkr.Rmd</code></a></small>
       <div class="hidden name"><code>crosswalkr.Rmd</code></div>
@@ -227,19 +227,19 @@ For example:</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://larmarange.github.io/labelled/" class="external-link">labelled</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">sid</span>,</span>
 <span>           last_name <span class="op">=</span> <span class="va">lname</span>,</span>
 <span>           stabbr <span class="op">=</span> <span class="va">stat</span>,</span>
 <span>           score <span class="op">=</span> <span class="va">t_score</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">file_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="va">file_2</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">stu_id</span>,</span>
 <span>           stabbr <span class="op">=</span> <span class="va">st</span>,</span>
-<span>           score <span class="op">=</span> <span class="va">test_score</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>           score <span class="op">=</span> <span class="va">test_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">stabbr</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="va">file_3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="va">file_3</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">s_id</span>,</span>
 <span>           stabbr <span class="op">=</span> <span class="va">sta</span>,</span>
 <span>           last_name <span class="op">=</span> <span class="va">name</span><span class="op">)</span></span>
@@ -333,9 +333,12 @@ type of file by its ending.</p>
 </h2>
 <p>To rename using the <code><a href="../reference/renamefrom.html">renamefrom()</a></code> command:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_1</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_1_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
-<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_2</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_2_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
-<span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_3</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_3_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_1</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_1_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, </span>
+<span>                  label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
+<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_2</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_2_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, </span>
+<span>                  label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
+<span><span class="va">df3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">file_3</span>, cw_file <span class="op">=</span> <span class="va">crosswalk</span>, raw <span class="op">=</span> <span class="va">file_3_raw</span>, clean <span class="op">=</span> <span class="va">clean</span>, </span>
+<span>                  label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">df1</span>, <span class="va">df2</span>, <span class="va">df3</span><span class="op">)</span></span>
 <span><span class="va">df</span></span></code></pre></div>
@@ -403,7 +406,8 @@ depending on whether the input data frame is a tibble.</p>
 <h4 id="factor">factor<a class="anchor" aria-label="anchor" href="#factor"></a>
 </h4>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df1</span><span class="op">$</span><span class="va">state</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">file_1</span>, var <span class="op">=</span> <span class="va">stat</span>, <span class="va">stcrosswalk</span>, raw <span class="op">=</span> <span class="va">stabbr</span>, clean <span class="op">=</span> <span class="va">stfips</span>, label <span class="op">=</span> <span class="va">stname</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">df1</span><span class="op">$</span><span class="va">state</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">file_1</span>, var <span class="op">=</span> <span class="va">stat</span>, <span class="va">stcrosswalk</span>, raw <span class="op">=</span> <span class="va">stabbr</span>, </span>
+<span>                        clean <span class="op">=</span> <span class="va">stfips</span>, label <span class="op">=</span> <span class="va">stname</span><span class="op">)</span></span>
 <span><span class="va">df1</span></span></code></pre></div>
 <pre><code><span><span class="co">##   id last_name stabbr score    state</span></span>
 <span><span class="co">## 1  1   Jackson     VA    74 Virginia</span></span>
@@ -418,7 +422,7 @@ depending on whether the input data frame is a tibble.</p>
 <h4 id="labelled-vector">labelled vector<a class="anchor" aria-label="anchor" href="#labelled-vector"></a>
 </h4>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">file_1_</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">file_1_</span> <span class="op">&lt;-</span> <span class="va">file_1</span> <span class="op">|&gt;</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">df1</span><span class="op">$</span><span class="va">state</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">file_1_</span>, var <span class="op">=</span> <span class="va">stat</span>, <span class="va">stcrosswalk</span>, raw <span class="op">=</span> <span class="va">stabbr</span>,</span>
 <span>                        clean <span class="op">=</span> <span class="va">stfips</span>, label <span class="op">=</span> <span class="va">stname</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html" class="external-link">as_factor</a></span><span class="op">(</span><span class="va">df1</span><span class="op">)</span></span></code></pre></div>
@@ -440,22 +444,25 @@ depending on whether the input data frame is a tibble.</p>
 <p>The <code><a href="../reference/renamefrom.html">renamefrom()</a></code> and <code><a href="../reference/encodefrom.html">encodefrom()</a></code> functions
 can be combined in a <code>dplyr</code> chain.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">file_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_1_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stabbr</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">file_1</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">crosswalk</span>, <span class="va">file_1_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stabbr</span>, <span class="va">stfips</span>, </span>
+<span>                                        <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
 <span></span>
 <span>            <span class="co">## append file 2</span></span>
-<span>            <span class="va">file_2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_2_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stfips</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            <span class="va">file_2</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">crosswalk</span>, <span class="va">file_2_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stfips</span>, <span class="va">stfips</span>, </span>
+<span>                                        <span class="va">stname</span><span class="op">)</span><span class="op">)</span>,</span>
 <span></span>
 <span>            <span class="co">## append file 3</span></span>
-<span>            <span class="va">file_3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">crosswalk</span>, <span class="va">file_3_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stname</span>, <span class="va">stfips</span>, <span class="va">stname</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>            <span class="va">file_3</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>            <span class="fu"><a href="../reference/renamefrom.html">renamefrom</a></span><span class="op">(</span><span class="va">crosswalk</span>, <span class="va">file_3_raw</span>, <span class="va">clean</span>, <span class="va">label</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>            <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>stabbr <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">stabbr</span>, <span class="va">stcrosswalk</span>, <span class="va">stname</span>, <span class="va">stfips</span>, </span>
+<span>                                        <span class="va">stname</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 9 × 4</span></span></span>

@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crosswalkr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Collapsing</h1>
             
-            <h4 data-toc-skip class="date">2026-01-16</h4>
+            <h4 data-toc-skip class="date">2026-02-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/btskinner/crosswalkr/blob/main/vignettes/collapse.Rmd" class="external-link"><code>vignettes/collapse.Rmd</code></a></small>
       <div class="hidden name"><code>collapse.Rmd</code></div>
@@ -297,10 +297,11 @@ you move from raw to clean values.</p>
 <span>                       <span class="st">'IL'</span>,<span class="st">'IN'</span>,<span class="st">'IA'</span>,<span class="st">'NJ'</span>,<span class="st">'NY'</span><span class="op">)</span>,</span>
 <span>             cendiv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">8</span>,<span class="fl">7</span>,<span class="fl">9</span>,<span class="fl">8</span>,<span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">5</span>,<span class="fl">9</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span>,</span>
 <span>             cendiv_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'East South Central'</span>,<span class="st">'Pacific'</span>,<span class="st">'Mountain'</span>,</span>
-<span>                             <span class="st">'West South Central'</span>,<span class="st">'Pacific'</span>,<span class="st">'Mountain'</span>,<span class="st">'New England'</span>,</span>
-<span>                             <span class="st">'South Atlantic'</span>,<span class="st">'South Atlantic'</span>,<span class="st">'Pacific'</span>,</span>
-<span>                             <span class="st">'East North Central'</span>,<span class="st">'East North Central'</span>,</span>
-<span>                             <span class="st">'West North Central'</span>,<span class="st">'Middle Atlantic'</span>,<span class="st">'Middle Atlantic'</span><span class="op">)</span><span class="op">)</span></span>
+<span>                        <span class="st">'West South Central'</span>,<span class="st">'Pacific'</span>,<span class="st">'Mountain'</span>,<span class="st">'New England'</span>,</span>
+<span>                        <span class="st">'South Atlantic'</span>,<span class="st">'South Atlantic'</span>,<span class="st">'Pacific'</span>,</span>
+<span>                        <span class="st">'East North Central'</span>,<span class="st">'East North Central'</span>,</span>
+<span>                        <span class="st">'West North Central'</span>,<span class="st">'Middle Atlantic'</span>,</span>
+<span>                        <span class="st">'Middle Atlantic'</span><span class="op">)</span><span class="op">)</span></span>
 <span>             </span>
 <span><span class="co">## crosswalk</span></span>
 <span><span class="va">cw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>cendiv <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,</span>
@@ -309,7 +310,7 @@ you move from raw to clean values.</p>
 <span>                          <span class="st">'South'</span>,<span class="st">'South'</span>,<span class="st">'South'</span>,<span class="st">'West'</span>,<span class="st">'West'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## encode new column</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>cenreg <span class="op">=</span> <span class="fu"><a href="../reference/encodefrom.html">encodefrom</a></span><span class="op">(</span><span class="va">.</span>, var <span class="op">=</span> <span class="va">cendiv</span>, cw_file <span class="op">=</span> <span class="va">cw</span>, raw <span class="op">=</span> <span class="va">cendiv</span>,</span>
 <span>                               clean <span class="op">=</span> <span class="va">cenreg</span>, label <span class="op">=</span> <span class="va">cenregnm</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
