@@ -1,6 +1,6 @@
 Package: crosswalkr
 Title: Rename and Encode Data Frames Using External Crosswalk Files
-Version: 0.3.1
+Version: 0.4.0
 Authors@R: person("Benjamin", "Skinner",
            email = "ben@btskinner.io",
            role = c("aut", "cre"),
@@ -13,7 +13,7 @@ Description: A pair of functions for renaming and encoding data frames
 Maintainer: Benjamin Skinner <ben@btskinner.io>
 URL: https://github.com/btskinner/crosswalkr
 BugReports: https://github.com/btskinner/crosswalkr/issues   
-Depends: R (>= 3.3.0)
+Depends: R (>= 3.5.0)
 Imports: haven,
 	labelled,
 	methods,
